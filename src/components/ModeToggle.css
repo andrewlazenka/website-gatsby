@@ -1,0 +1,15 @@
+.mode-toggle.react-toggle--checked .react-toggle-track {
+  background-color: #fff !important;
+}
+
+.mode-toggle.react-toggle .react-toggle-track {
+  background-color: #0f1121;
+}
+
+.mode-toggle.react-toggle:hover .react-toggle-track {
+  background-color: #0f1121;
+}
+
+.mode-toggle .react-toggle-thumb {
+  border-color: #0aa1d2;
+}
