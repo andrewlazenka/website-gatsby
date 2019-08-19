@@ -28,7 +28,7 @@ export default function SnippetTemplate({ data }) {
     startYear,
     title,
   } = frontmatter
-  console.log(title)
+
   const startDate = format(new Date(startYear, startMonth), 'MMMM YYYY')
   const endDate = format(new Date(endYear, endMonth), 'MMMM YYYY')
   return (
