@@ -5,18 +5,28 @@ import SocialLinks from './SocialLinks'
 
 const FooterContainer = styled.footer`
   display: flex;
-  justify-content: space-around;
   align-items: center;
-  width: 80%;
+  width: 100%;
   background-color: ${({ theme }) => theme.footerBgColor};
   min-height: 100px;
-  padding: 0 10%;
+`
+
+const FooterContainerInterior = styled.div`
+  display: flex;
+  justify-content: space-between;
+  background-color: ${({ theme }) => theme.footerBgColor};
+  padding: 0 1.3125rem;
+  width: 70%;
+  max-width: 850px;
+  margin: 0 auto;
 `
 
 function Footer() {
   return (
     <FooterContainer>
-      <SocialLinks />
+      <FooterContainerInterior>
+        <SocialLinks />
+      </FooterContainerInterior>
     </FooterContainer>
   )
 }
