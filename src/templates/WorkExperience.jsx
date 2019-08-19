@@ -5,6 +5,7 @@ import Helmet from 'react-helmet'
 import { format } from 'date-fns'
 
 import Header from '../components/Header'
+import Footer from '../components/Footer'
 import Layout from '../components/Layout'
 import PageHeader from '../components/PageHeader'
 import Theme from '../components/Theme'
@@ -45,6 +46,7 @@ export default function SnippetTemplate({ data }) {
           <h4>{`${startDate} - ${endDate}`}</h4>
           <WorkTemplateContainer dangerouslySetInnerHTML={{ __html }} />
         </Layout>
+        <Footer />
       </Theme>
     </ModeProvider>
   )

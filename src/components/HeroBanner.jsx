@@ -15,6 +15,7 @@ const HeroBanner = styled.div`
 
 export default props => {
   const { darkMode } = React.useContext(ModeContext)
+  console.log('hero banner, theme', darkMode)
   return (
     <HeroBanner svg={darkMode ? TrianglesGrey : TrianglesBlue} {...props} />
   )

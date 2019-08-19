@@ -5,6 +5,7 @@ import styled from 'styled-components'
 
 import Code from '../components/Code'
 import Header from '../components/Header'
+import Footer from '../components/Footer'
 import Layout from '../components/Layout'
 import { InternalLink } from '../components/Links'
 import PageHeader from '../components/PageHeader'
@@ -64,6 +65,7 @@ function SnippetTemplate({ data }) {
             </article>
           </main>
         </Layout>
+        <Footer />
       </Theme>
     </ModeProvider>
   )

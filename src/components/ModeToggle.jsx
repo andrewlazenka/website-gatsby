@@ -14,7 +14,7 @@ function ModeToggle() {
     <Tooltip label={`Toggle Theme - ${darkMode ? 'Light' : 'Dark'}`}>
       <span style={{ lineHeight: 0 }}>
         <Toggle
-          defaultChecked={darkMode}
+          checked={darkMode}
           className="mode-toggle"
           icons={false}
           onChange={() => setDarkMode(!darkMode)}

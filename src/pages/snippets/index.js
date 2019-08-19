@@ -6,6 +6,7 @@ import Fuse from 'fuse.js'
 
 import ArrowRight from '../../assets/svg/arrow-right.svg'
 import Header from '../../components/Header'
+import Footer from '../../components/Footer'
 import Layout from '../../components/Layout'
 import { InternalLink } from '../../components/Links'
 import PageHeader from '../../components/PageHeader'
@@ -411,6 +412,7 @@ export default function SnippetSearch({ data }) {
             </Main>
           </SearchSnippetWrapper>
         </Layout>
+        <Footer />
       </Theme>
     </ModeProvider>
   )

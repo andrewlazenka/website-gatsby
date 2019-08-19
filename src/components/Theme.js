@@ -42,6 +42,7 @@ const GlobalStyle = createGlobalStyle`
     line-height: 1.75;
     margin: 0;
     transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    min-width: 400px;
   }
 
   h1 {
