@@ -1,7 +1,7 @@
 {
-  "name": "snippets",
-  "private": true,
-  "description": "A curated list of code snippets. Filterable and searchable.",
+  "name": "andrewlazenka.com",
+  "private": false,
+  "description": "This is my personal website. Built with React & Gatsby.",
   "version": "0.1.0",
   "license": "MIT",
   "scripts": {
