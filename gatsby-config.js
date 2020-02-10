@@ -74,5 +74,6 @@ module.exports = {
         cookieDomain: 'andrewlazenka.com',
       },
     },
+    `gatsby-plugin-sitemap`
   ],
 }
