@@ -107,8 +107,22 @@ export default function Home({ data }) {
                 Find out more about that here.
               </InternalLink>
               <br />
-              <br />I have a passion for learning new technologies and
-              incorporating them into my work. Right now I am exploring{' '}
+              <br />
+              I have a passion for learning new technologies and
+              incorporating them into my work. Right now I am exploring
+              highly performant, resilient and scalable backend solutions using
+              {' '}
+              <ExternalLink to="https://elixir-lang.org/">
+                Elixir
+              </ExternalLink>
+              ,{' '}
+              <ExternalLink to="https://golang.org/">
+                Go
+              </ExternalLink>, and{' '}
+              <ExternalLink to="https://rubyonrails.org/">
+                Ruby on Rails
+              </ExternalLink>.
+              For frontend development projects I've been mainly using{' '}
               <ExternalLink to="https://www.gatsbyjs.org">
                 GatsbyJS
               </ExternalLink>{' '}
@@ -116,15 +130,20 @@ export default function Home({ data }) {
               <ExternalLink to="https://www.styled-components.com/">
                 Styled Components
               </ExternalLink>{' '}
-              which I used to build my site!
+              since I came across them, and they were used to build this site!
               <br />
               <br />
-              In my spare time I enjoy writing open source software which you
-              can find on my{' '}
+              In my spare time, I enjoy writing my own music as well as open
+              source software which you can find on my{' '}
               <ExternalLink to="https://github.com/ALazenka">
                 GitHub Page
-              </ExternalLink>
-              {'.'}
+              </ExternalLink>.
+              <br />
+              <br />
+              I also play guitar in my band{' '}
+              <ExternalLink to="https://prettyyoungthangband.com">
+                Pretty Young Thang
+              </ExternalLink>. Check us out!
             </div>
             <div>
               <h3>Work & Experience</h3>
