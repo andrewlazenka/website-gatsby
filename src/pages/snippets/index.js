@@ -141,7 +141,7 @@ const Dropdown = styled.div`
 
 const options = {
   shouldSort: true,
-  threshold: 0.35,
+  threshold: 0.28,
   location: 0,
   distance: 100,
   maxPatternLength: 32,
@@ -163,6 +163,7 @@ function useFuseSearch(initialArr, searchOptions) {
     } else {
       const fuse = new Fuse(initialArr, searchOptions)
       const matchedSnippets = fuse.search(search)
+      console.log(matchedSnippets)
       setFilteredArr(matchedSnippets)
     }
   }
