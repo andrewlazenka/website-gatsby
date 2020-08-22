@@ -78,9 +78,9 @@ export default function Home({ data }) {
           <HeroBannerContentContainer>
             <AndrewInfoContainer>
               <span>
-                Hi, I'm <b>Andrew Lazenka</b>. I love full-stack development,
-                architecting robust devops solutions, collaborating, and most of
-                all problem solving.
+                Hi, I'm <b>Andrew</b>! I love full-stack development,
+                architecting robust devops solutions, collaborating, problem
+                solving, and most of all ☕️
               </span>
             </AndrewInfoContainer>
             <AndrewHeadshot
@@ -93,11 +93,7 @@ export default function Home({ data }) {
           <PageMain>
             <div>
               <h3>About</h3>
-              I'm in my fourth year at Queen's University pursuing a Bachelor in
-              Computer Science with a specialization in Software Design.
-              <br />
-              <br />
-              Since May 2018 I've been working at{' '}
+              Since 2018 I've been working at{' '}
               <ExternalLink to="https://www.innovasium.com">
                 Innovasium Digital
               </ExternalLink>{' '}
@@ -106,6 +102,11 @@ export default function Home({ data }) {
               <InternalLink to="/work-experience/innovasium-2018">
                 Find out more about that here.
               </InternalLink>
+              <br />
+              <br />
+              I completed my undergraduate studies at Queen's University and
+              received my Bachelor in Computer Science with a specialization in
+              Software Design.
               <br />
               <br />
               I have a passion for learning new technologies and
@@ -133,17 +134,15 @@ export default function Home({ data }) {
               since I came across them, and they were used to build this site!
               <br />
               <br />
-              In my spare time, I enjoy writing my own music as well as open
-              source software which you can find on my{' '}
+              In my spare time, I enjoy writing and contributing open
+              source software which you can find{' '}
               <ExternalLink to="https://github.com/ALazenka">
-                GitHub Page
-              </ExternalLink>.
-              <br />
-              <br />
-              I also play guitar in my band{' '}
+                on my GitHub
+              </ExternalLink>. Writing, playing and performing music is also a big passion of mine.
+              My band{' '}
               <ExternalLink to="https://prettyyoungthangband.com">
                 Pretty Young Thang
-              </ExternalLink>. Check us out!
+              </ExternalLink> has been releasing new music on a regular basis, check us out!
             </div>
             <div>
               <h3>Work & Experience</h3>

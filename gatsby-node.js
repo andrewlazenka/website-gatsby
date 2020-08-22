@@ -1,7 +1,7 @@
 const path = require('path')
 const { generateSnippetPageSlug } = require('./src/util')
-const SnippetTemplate = path.resolve('src/templates/Snippets.jsx')
-const WorkExperienceTemplate = path.resolve('src/templates/WorkExperience.jsx')
+const SnippetTemplate = path.resolve('src/templates/Snippets')
+const WorkExperienceTemplate = path.resolve('src/templates/WorkExperience')
 
 function getSnippets({ actions, graphql }) {
   const { createPage } = actions
