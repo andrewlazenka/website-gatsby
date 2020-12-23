@@ -1,81 +1,34 @@
 import React from 'react'
-import styled, { css } from 'styled-components'
+import clsx from 'classnames'
 
-const top1 = '24px'
-const top2 = '32px'
-const top3 = '40px'
+import './HamburgerMenu.css'
 
-const HamburgerMenuContainerStyled = css`
-  cursor: pointer;
-  position: relative;
-  transform: rotate(0deg);
-  transition: 0.5s ease-in-out;
-  height: 100%;
-  width: 32px;
-  z-index: 20;
+const BaseLine = ({ className, d }) => (
+  <path className={clsx('line', className)} d={d} />
+)
 
-  span:nth-child(1) {
-    top: ${top1};
-  }
-
-  span:nth-child(2),
-  span:nth-child(3) {
-    top: ${top2};
-  }
-
-  span:nth-child(4) {
-    top: ${top3};
-  }
-`
-
-const HamburgerMenuContainerOpenStyle = css`
-  span:nth-child(1) {
-    top: ${top2};
-    width: 0%;
-    left: 50%;
-  }
-
-  span:nth-child(2) {
-    transform: rotate(45deg);
-  }
-
-  span:nth-child(3) {
-    transform: rotate(-45deg);
-  }
-
-  span:nth-child(4) {
-    top: ${top2};
-    width: 0%;
-    left: 50%;
-  }
-`
-
-const HamburgerMenuStrip = styled.span`
-  display: block;
-  position: absolute;
-  height: 3px;
-  width: 100%;
-  background: ${props => props.theme.fontColor};
-  border-radius: 50px;
-  opacity: 1;
-  left: 0;
-  transform: rotate(0deg);
-  transition: 0.25s ease-in-out;
-`
-
-const HamburgerMenu = ({ active, onClick }) => {
-  let style = HamburgerMenuContainerStyled
-  if (active) {
-    style = [...style, ...HamburgerMenuContainerOpenStyle]
-  }
-  return (
-    <div onClick={onClick} css={style}>
-      <HamburgerMenuStrip />
-      <HamburgerMenuStrip />
-      <HamburgerMenuStrip />
-      <HamburgerMenuStrip />
-    </div>
-  )
-}
+const HamburgerMenu = ({ active, onClick }) => (
+  <button
+    className={clsx('bg-transparent border-none cursor-pointer flex p-0', {
+      opened: active,
+      'z-20': active,
+    })}
+    onClick={onClick}
+    aria-label="Mobile Menu"
+    aria-expanded={active ? 'true' : 'false'}
+  >
+    <svg className="fill-current" width="32" height="32" viewBox="0 0 100 100">
+      <BaseLine
+        className="line1"
+        d="M 20,29.000046 H 80.000231 C 80.000231,29.000046 94.498839,28.817352 94.532987,66.711331 94.543142,77.980673 90.966081,81.670246 85.259173,81.668997 79.552261,81.667751 75.000211,74.999942 75.000211,74.999942 L 25.000021,25.000058"
+      />
+      <BaseLine className="line2" d="M 20,50 H 80" />
+      <BaseLine
+        className="line3"
+        d="M 20,70.999954 H 80.000231 C 80.000231,70.999954 94.498839,71.182648 94.532987,33.288669 94.543142,22.019327 90.966081,18.329754 85.259173,18.331003 79.552261,18.332249 75.000211,25.000058 75.000211,25.000058 L 25.000021,74.999942"
+      />
+    </svg>
+  </button>
+)
 
 export default HamburgerMenu
