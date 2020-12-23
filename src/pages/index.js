@@ -69,6 +69,7 @@ function sortFilterWork(ex1, ex2) {
 }
 
 export default function Home({ data }) {
+  console.log("🚀 ~ file: index.js ~ line 72 ~ Home ~ data", data)
   return (
     <ModeProvider>
       <Theme>
