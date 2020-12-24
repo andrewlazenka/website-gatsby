@@ -40,7 +40,7 @@ position: 'Full-Stack Developer & DevOps Architect Internship'
 - CircleCI
 - Git
 
-## The Position in Review
+## Position in Review
 
 Upon completing my third year at Queen's University, I leveraged a valuable
 opportunity through the school to go on a 12 month internship. Innovasium was kind

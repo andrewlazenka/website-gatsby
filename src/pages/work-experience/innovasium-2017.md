@@ -38,7 +38,7 @@ position: 'Full-Stack Developer'
 - Postgres
 - Git
 
-## The Position in Review
+## Position in Review
 
 Rejoining the team at Innovasium for the summer of 2017 lead to an even greater
 learning experience than the last. I was exposed to a technology stack I had

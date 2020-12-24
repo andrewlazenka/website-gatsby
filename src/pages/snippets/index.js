@@ -1,5 +1,5 @@
 import React from 'react'
-import styled, { css } from 'styled-components'
+import clsx from 'classnames'
 import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
 import Fuse from 'fuse.js'
@@ -11,133 +11,7 @@ import Layout from '../../components/Layout'
 import { InternalLink } from '../../components/Links'
 import PageHeader from '../../components/PageHeader'
 import Theme from '../../components/Theme'
-import { ModeProvider } from '../../contexts/ModeContext'
 import { generateSnippetPageSlug } from '../../util'
-
-const SearchSnippetWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-
-  @media only screen and (max-width: 768px) {
-    flex-direction: column;
-  }
-`
-
-const SnippetFilterLabel = styled.label`
-  color: ${props => props.theme.blueColor};
-`
-
-const SnippetFilterKey = styled.div`
-  color: ${props => props.theme.blueColor};
-  text-transform: capitalize;
-`
-
-const SnippetFilterValues = styled.div`
-  text-transform: uppercase;
-`
-
-const SnippetContainer = styled.article`
-  margin: 8px 0;
-  padding: 16px;
-  padding-top: 8px;
-`
-
-const SnippetFilterWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`
-
-const SnippetFilterContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-`
-
-const FilterToggle = styled.div`
-  align-items: center;
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-`
-
-const FilterToggleWrapper = styled.div`
-  height: 32px;
-  margin: 5px 0;
-`
-
-const Aside = styled.aside`
-  width: 25%;
-  min-width: 175px;
-
-  @media only screen and (max-width: 768px) {
-    width: 100%;
-  }
-`
-
-const Main = styled.main`
-  width: 67%;
-
-  @media only screen and (max-width: 768px) {
-    width: 100%;
-  }
-`
-
-const Input = styled.input`
-  box-sizing: border-box;
-  height: 32px;
-  width: 100%;
-  border: 1px solid #dee3e5;
-  border-radius: 4px;
-  background-color: #f5f6f9;
-  color: #000;
-  font-size: 16px;
-  line-height: 22px;
-  padding: 8px;
-  margin: 5px 0;
-
-  ::placeholder {
-    color: #999;
-  }
-
-  :hover {
-    background-color: #f7f8fb;
-  }
-
-  :focus {
-    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.14);
-    background-color: #f7f8fb;
-  }
-`
-
-const Dropdown = styled.div`
-  overflow: hidden;
-  height: 32px;
-  width: auto;
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #eee;
-  cursor: pointer;
-  position: relative;
-  min-width: 100px;
-  margin: 5px 0;
-  box-sizing: border-box;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
-
-  select {
-    background: ${({ theme }) => theme.bgColor};
-    font-size: 14px;
-    border: 1px solid #ccc;
-    height: 32px;
-    border: 0;
-    padding-left: 7px;
-    color: ${({ theme }) => theme.fontColor};
-    transition: color 0.3s ease-in-out;
-    width: auto;
-    min-width: 100px;
-  }
-`
 
 const options = {
   shouldSort: true,
@@ -255,58 +129,34 @@ function SnippetList({ snippets, sortBy }) {
   return snippets.length > 0
     ? snippets
         .sort(sortSnippets)
-        .map(({ birthTime, excerpt, fileAbsolutePath, frontmatter }) => {
+        .map(({ excerpt, fileAbsolutePath, frontmatter }) => {
           const slug = generateSnippetPageSlug({ fileAbsolutePath })
           return (
-            <SnippetContainer key={slug}>
+            <article className="py-3 px-4" key={slug}>
               <header>
                 <InternalLink to={slug} key={slug}>
                   <h3>{`${frontmatter.title}`}</h3>
                 </InternalLink>
               </header>
-              <p>
-                {excerpt}{' '}
-                <InternalLink to={slug} key={slug}>
-                  View Code →
-                </InternalLink>
-              </p>
-            </SnippetContainer>
+              <p className="m-0">{excerpt}</p>
+            </article>
           )
         })
     : 'No Snippets found!'
 }
 
-function Arrow({ point = 'right' }) {
-  let transformStyle = css`
-    height: 12px;
-    margin-left: 8px;
-  `
-  if (point === 'down') {
-    transformStyle = [
-      ...transformStyle,
-      css`
-        transform: rotate(90deg);
-      `,
-    ]
-  }
-  if (point === 'up') {
-    transformStyle = [
-      ...transformStyle,
-      css`
-        transform: rotate(270deg);
-      `,
-    ]
-  }
-  if (point === 'left') {
-    transformStyle = [
-      ...transformStyle,
-      css`
-        transform: rotate(180deg);
-      `,
-    ]
-  }
-  return <img src={ArrowRight} alt="Open Close Arrow" css={transformStyle} />
-}
+const Arrow = ({ point = 'right' }) => (
+  <img
+    src={ArrowRight}
+    className={clsx(
+      'h-3 ml-2 transition-transform duration-100 ease-in-out',
+      { 'transform rotate-90': point === 'down' },
+      { 'transform rotate-270': point === 'up' },
+      { 'transform rotate-180': point === 'left' }
+    )}
+    alt="Open Close Arrow"
+  />
+)
 
 function SnippetFilters({ allFilters, appliedFilters, onChange }) {
   const [filtersOpen, setFiltersOpen] = React.useState({})
@@ -321,16 +171,22 @@ function SnippetFilters({ allFilters, appliedFilters, onChange }) {
 
   return Object.keys(allFilters).map(filterKey => (
     <React.Fragment key={`filter-${filterKey}`}>
-      <FilterToggleWrapper>
-        <FilterToggle onClick={() => toggleFilterOpen(filterKey)}>
-          <SnippetFilterKey>{filterKey}</SnippetFilterKey>
+      <div className="h-8 my-3">
+        <div
+          className="flex items-center justify-between cursor-pointer"
+          onClick={() => toggleFilterOpen(filterKey)}
+        >
+          <div className="text-indigo-500 capitalize">{filterKey}</div>
           <Arrow point={filtersOpen[filterKey] ? 'down' : 'right'} />
-        </FilterToggle>
-      </FilterToggleWrapper>
+        </div>
+      </div>
       {filtersOpen[filterKey] && (
-        <SnippetFilterContainer>
+        <div className="flex flex-col flex-wrap">
           {allFilters[filterKey].map(filter => (
-            <SnippetFilterValues key={`filter-value-${filter}`}>
+            <div
+              className={filterKey === 'language' ? 'uppercase' : 'capitalize'}
+              key={`filter-value-${filter}`}
+            >
               <input
                 type="checkbox"
                 id={`${filter}-checkbox`}
@@ -338,9 +194,9 @@ function SnippetFilters({ allFilters, appliedFilters, onChange }) {
                 onChange={() => onChange(filter)}
               />
               <label htmlFor={`${filter}-checkbox`}>{filter}</label>
-            </SnippetFilterValues>
+            </div>
           ))}
-        </SnippetFilterContainer>
+        </div>
       )}
     </React.Fragment>
   ))
@@ -363,59 +219,58 @@ export default function SnippetSearch({ data }) {
   }
 
   return (
-    <ModeProvider>
-      <Theme>
-        <Helmet title="Snippets - Andrew Lazenka" />
-        <Header />
-        <Layout>
-          <PageHeader>
-            <h1 style={{ marginBottom: 0 }}>Snippets</h1>
-          </PageHeader>
-          <SearchSnippetWrapper>
-            <Aside>
-              <SnippetFilterWrapper>
-                <Input
-                  id="seach-snippets"
-                  onChange={e => searchFilteredSnippets(e.target.value)}
-                  placeholder="Find a Snippet"
-                  type="text"
-                />
-              </SnippetFilterWrapper>
-              <SnippetFilterWrapper>
-                <SnippetFilterLabel htmlFor="snippet-sort">
-                  Sort
-                </SnippetFilterLabel>
-                <Dropdown>
-                  <select
-                    id="snippet-sort"
-                    value={snippetSort}
-                    onChange={e => setSnippetSort(e.target.value)}
-                  >
-                    <option value="title-asc">Title A - Z</option>
-                    <option value="title-desc">Title Z - A</option>
-                  </select>
-                </Dropdown>
-              </SnippetFilterWrapper>
-              <SnippetFilters
-                allFilters={filters}
-                appliedFilters={snippetFilters}
-                onChange={filter => {
-                  if (snippetFilters.includes(filter)) {
-                    setSnippetFilters({ type: 'remove', filter })
-                  } else {
-                    setSnippetFilters({ type: 'add', filter })
-                  }
-                }}
+    <Theme>
+      <Helmet title="Snippets - Andrew Lazenka" />
+      <Header />
+      <Layout>
+        <div className="flex justify-between flex-col md:flex-row">
+          <aside className="w-full md:w-1/4" style={{ minWidth: 175 }}>
+            <PageHeader>
+              <h1 style={{ marginBottom: 0 }}>Snippets</h1>
+            </PageHeader>
+            <div className="flex justify-between items-center">
+              <input
+                id="seach-snippets"
+                className="snippets-input"
+                onChange={e => searchFilteredSnippets(e.target.value)}
+                placeholder="Find a snippet"
+                type="text"
               />
-            </Aside>
-            <Main>
-              <SnippetList snippets={filteredSnippets} sortBy={snippetSort} />
-            </Main>
-          </SearchSnippetWrapper>
-        </Layout>
-        <Footer />
-      </Theme>
-    </ModeProvider>
+            </div>
+            <div className="flex justify-between items-center">
+              <label className="text-indigo-500" htmlFor="snippet-sort">
+                Sort
+              </label>
+              <div className="snippets-dropdown">
+                <select
+                  id="snippet-sort"
+                  value={snippetSort}
+                  onChange={e => setSnippetSort(e.target.value)}
+                >
+                  <option value="title-asc">Title A - Z</option>
+                  <option value="title-desc">Title Z - A</option>
+                </select>
+              </div>
+            </div>
+            <SnippetFilters
+              allFilters={filters}
+              appliedFilters={snippetFilters}
+              onChange={filter => {
+                if (snippetFilters.includes(filter)) {
+                  setSnippetFilters({ type: 'remove', filter })
+                } else {
+                  setSnippetFilters({ type: 'add', filter })
+                }
+              }}
+            />
+          </aside>
+          <main className="w-full md:w-4/6">
+            <SnippetList snippets={filteredSnippets} sortBy={snippetSort} />
+          </main>
+        </div>
+      </Layout>
+      <Footer />
+    </Theme>
   )
 }
 

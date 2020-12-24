@@ -31,7 +31,7 @@ position: 'Backend Developer'
 - Postgres
 - Git
 
-## The Position in Review
+## Position in Review
 
 Throughout the summer of 2016, I had the opportunity to work for the team at
 Innovasium Digital. I was responsible for designing and implementing the initial

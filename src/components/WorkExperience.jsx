@@ -1,17 +1,8 @@
 import React from 'react'
-import styled from 'styled-components'
 import { format } from 'date-fns'
 
 import { generateSnippetPageSlug } from '../util'
 import { InternalLink } from '../components/Links'
-
-const H4 = styled.h4`
-  margin-bottom: 8px;
-`
-
-const FrontmatterDate = styled.p`
-  margin-top: 8px;
-`
 
 function WorkExperience({ frontmatter, fileAbsolutePath }) {
   const {
@@ -25,11 +16,12 @@ function WorkExperience({ frontmatter, fileAbsolutePath }) {
   const startDate = format(new Date(startYear, startMonth), 'MMMM YYYY')
   const endDate = format(new Date(endYear, endMonth), 'MMMM YYYY')
   return (
-    <div>
+    <div className="py-3 px-4 pl-0">
       <InternalLink to={generateSnippetPageSlug({ fileAbsolutePath })}>
-        <H4>{`${company} - ${position}`}</H4>
+        <h3>{position}</h3>
       </InternalLink>
-      <FrontmatterDate>{`${startDate} - ${endDate}`}</FrontmatterDate>
+      <h4>{company}</h4>
+      <p className="m-0">{`${startDate} - ${endDate}`}</p>
     </div>
   )
 }

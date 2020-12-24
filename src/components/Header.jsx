@@ -1,5 +1,4 @@
 import React from 'react'
-import styled from 'styled-components'
 
 import HamburgerMenu from './HamburgerMenu'
 import ModalMenu from './ModalMenu'
@@ -7,35 +6,6 @@ import ModeToggle from './ModeToggle'
 import AndrewLogo from '../assets/png/AndrewLogo.png'
 import { LocationAwareLink } from '../components/Links'
 import SocialLinks from '../components/SocialLinks'
-import useWindowSize from '../hooks/useWindowSize'
-
-const AppHeader = styled.header`
-  display: flex;
-  height: 75px;
-  justify-content: space-between;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 100%;
-  z-index: 1;
-`
-
-const NavbarItem = styled.div`
-  align-items: center;
-  cursor: pointer;
-  display: flex;
-  height: calc(100% - 4px);
-  padding: 0 1.73rem;
-`
-
-const NavItemContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-`
-
-const SiteLogo = styled.img`
-  height: 32px;
-`
 
 const menuItems = [
   {
@@ -48,79 +18,55 @@ const menuItems = [
   },
 ]
 
-const MenuModelItemsContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`
-
-const ItemPadding = styled.div`
-  padding: 24px 0;
-  margin: 0 auto;
-`
-
-const SocialLinksContainer = styled.div`
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width: 80%;
-  min-height: 100px;
-  padding: 0 10%;
-`
+const MobileMenu = ({ onClose }) => (
+  <div className="flex flex-col items-center">
+    {menuItems.map(({ name, to }, index) => (
+      <div className="flex py-6 items-center" key={`${name}-${index}`}>
+        <LocationAwareLink to={to} onClick={onClose}>
+          {name}
+        </LocationAwareLink>
+      </div>
+    ))}
+    <div className="flex justify-around items-center w-4/5 py-6">
+      <SocialLinks />
+    </div>
+  </div>
+)
 
 export default () => {
   const [menuModalOpen, setMenuModalOpen] = React.useState(false)
-  const { size } = useWindowSize()
   return (
-    <AppHeader>
-      <LocationAwareLink to="/">
-        <NavbarItem>
-          <SiteLogo src={AndrewLogo} alt="Site Logo - Andrew Lazenka" />
-        </NavbarItem>
-      </LocationAwareLink>
-      <NavItemContainer>
-        {size === 'mobile' ? (
-          <React.Fragment>
-            <ItemPadding>
-              <ModeToggle />
-            </ItemPadding>
-            <NavbarItem style={{ cursor: 'default' }}>
-              <HamburgerMenu
-                active={menuModalOpen}
-                onClick={() => setMenuModalOpen(!menuModalOpen)}
-              />
-              <ModalMenu open={menuModalOpen}>
-                <MenuModelItemsContainer>
-                  {menuItems.map(({ name, to }, index) => (
-                    <ItemPadding key={`${name}-${index}`}>
-                      <LocationAwareLink
-                        to={to}
-                        onClick={() => setMenuModalOpen(false)}
-                      >
-                        {name}
-                      </LocationAwareLink>
-                    </ItemPadding>
-                  ))}
-                  <SocialLinksContainer>
-                    <SocialLinks />
-                  </SocialLinksContainer>
-                </MenuModelItemsContainer>
-              </ModalMenu>
-            </NavbarItem>
-          </React.Fragment>
-        ) : (
-          <React.Fragment>
-            {menuItems.map(({ name, to }, index) => (
-              <LocationAwareLink key={`${name}-${index}`} to={to}>
-                <NavbarItem>{name}</NavbarItem>
-              </LocationAwareLink>
-            ))}
-            <NavbarItem>
-              <ModeToggle />
-            </NavbarItem>
-          </React.Fragment>
-        )}
-      </NavItemContainer>
-    </AppHeader>
+    <div className="absolute z-10 top-0 left-0 flex justify-between w-full">
+      <div className="flex items-center p-7">
+        <LocationAwareLink to="/">
+          <img
+            src={AndrewLogo}
+            alt="Site Logo - Andrew Lazenka"
+            className="h-8"
+          />
+        </LocationAwareLink>
+      </div>
+      <div className="flex">
+        {menuItems.map(({ name, to }, index) => (
+          <div key={name} className="hidden md:flex items-center p-7">
+            <LocationAwareLink key={`${name}-${index}`} to={to}>
+              {name}
+            </LocationAwareLink>
+          </div>
+        ))}
+        <div className="flex items-center p-7">
+          <ModeToggle />
+        </div>
+        <div className="flex items-center p-7 cursor-default md:hidden">
+          <HamburgerMenu
+            active={menuModalOpen}
+            onClick={() => setMenuModalOpen(!menuModalOpen)}
+          />
+        </div>
+      </div>
+      <ModalMenu open={menuModalOpen}>
+        <MobileMenu onClose={() => setMenuModalOpen(false)} />
+      </ModalMenu>
+    </div>
   )
 }

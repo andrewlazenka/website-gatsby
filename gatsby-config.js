@@ -34,11 +34,10 @@ module.exports = {
       },
     },
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
-        fonts: [`montserrat\:400,700`],
+        fonts: [`roboto:100,200,300,400,500,600,700,800,900`],
         display: 'swap',
       },
     },
@@ -75,6 +74,7 @@ module.exports = {
         cookieDomain: 'andrewlazenka.com',
       },
     },
-    `gatsby-plugin-sitemap`
+    `gatsby-plugin-sitemap`,
+    'gatsby-plugin-postcss'
   ],
 }

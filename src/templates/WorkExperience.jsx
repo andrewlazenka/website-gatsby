@@ -1,6 +1,5 @@
 import React from 'react'
-import { graphql, Link } from 'gatsby'
-import styled from 'styled-components'
+import { graphql } from 'gatsby'
 import Helmet from 'react-helmet'
 import { format } from 'date-fns'
 
@@ -9,19 +8,13 @@ import Footer from '../components/Footer'
 import Layout from '../components/Layout'
 import PageHeader from '../components/PageHeader'
 import Theme from '../components/Theme'
-import { ModeProvider } from '../contexts/ModeContext'
-
-const WorkTemplateContainer = styled.div``
-
-const PageTitle = styled.h3`
-  color: ${props => props.theme.blueColor};
-  margin-bottom: 0;
-`
+import { InternalLink } from '../components/Links'
 
 export default function SnippetTemplate({ data }) {
   const { frontmatter, html: __html } = data.markdownRemark
   const {
     company,
+    position,
     endMonth,
     endYear,
     startMonth,
@@ -32,23 +25,22 @@ export default function SnippetTemplate({ data }) {
   const startDate = format(new Date(startYear, startMonth), 'MMMM YYYY')
   const endDate = format(new Date(endYear, endMonth), 'MMMM YYYY')
   return (
-    <ModeProvider>
-      <Theme>
-        <Helmet title={`${title} | Work Experience - Andrew Lazenka`} />
-        <Header />
-        <Layout>
-          <PageHeader>
-            <PageTitle>
-              <Link to="/work-experience">← Work Experience</Link>
-            </PageTitle>
-          </PageHeader>
-          <h1>{company}</h1>
-          <h4>{`${startDate} - ${endDate}`}</h4>
-          <WorkTemplateContainer dangerouslySetInnerHTML={{ __html }} />
-        </Layout>
-        <Footer />
-      </Theme>
-    </ModeProvider>
+    <Theme>
+      <Helmet title={`${title} | Work Experience - Andrew Lazenka`} />
+      <Header />
+      <Layout>
+        <PageHeader>
+          <h3 className="text-indigo-500 mb-0">
+            <InternalLink to="/work-experience">← Work Experience</InternalLink>
+          </h3>
+        </PageHeader>
+        <h1>{position}</h1>
+        <h3 className="font-medium">{company}</h3>
+        <h4 className="font-normal">{`${startDate} - ${endDate}`}</h4>
+        <div dangerouslySetInnerHTML={{ __html }} />
+      </Layout>
+      <Footer />
+    </Theme>
   )
 }
 

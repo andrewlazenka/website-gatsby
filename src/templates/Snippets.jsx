@@ -1,7 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
-import styled from 'styled-components'
 
 import Code from '../components/Code'
 import Header from '../components/Header'
@@ -10,25 +9,10 @@ import Layout from '../components/Layout'
 import { InternalLink } from '../components/Links'
 import PageHeader from '../components/PageHeader'
 import Theme from '../components/Theme'
-import { ModeProvider } from '../contexts/ModeContext'
 import { snippetDateString } from '../util'
 
 const getSnippetCode = baseCodeElement =>
   baseCodeElement.children[0].children[0].value
-
-const PageTitle = styled.h3`
-  color: ${props => props.theme.blueColor};
-  margin-bottom: 0;
-`
-
-const SnippetExcerpt = styled.p`
-  font-size: 0.9em;
-  border: 1px solid ${props => props.theme.excerptBorder};
-  border-radius: 0.75em;
-  padding: 0.75em;
-  background: ${props => props.theme.excerptBgColor};
-  word-break: keep-all;
-`
 
 function SnippetTemplate({ data }) {
   const { markdownRemark: post, file } = data
@@ -39,35 +23,34 @@ function SnippetTemplate({ data }) {
   )
   const codeSnippet = getSnippetCode(baseCodeElement)
   return (
-    <ModeProvider>
-      <Theme>
-        <Helmet
-          title={`${post.frontmatter.title} | Snippets - Andrew Lazenka`}
-        />
-        <Header />
-        <Layout>
-          <PageHeader>
-            <PageTitle>
-              <InternalLink to="/snippets">← Snippets</InternalLink>
-            </PageTitle>
-          </PageHeader>
-          <main>
-            <article>
-              <header>
-                <h1>{post.frontmatter.title}</h1>
-                <div>{`Added ${snippetDateString(file.birthTime)}`}</div>
-                <SnippetExcerpt
-                  dangerouslySetInnerHTML={{ __html: post.excerpt }}
-                />
-              </header>
-              <div dangerouslySetInnerHTML={{ __html: post.html }} />
-              <Code codeString={codeSnippet} language={language} />
-            </article>
-          </main>
-        </Layout>
-        <Footer />
-      </Theme>
-    </ModeProvider>
+    <Theme>
+      <Helmet title={`${post.frontmatter.title} Snippet - Andrew Lazenka`} />
+      <Header />
+      <Layout>
+        <PageHeader>
+          <InternalLink className="text-indigo-500 mb-0" to="/snippets">
+            ← Snippets
+          </InternalLink>
+        </PageHeader>
+        <main>
+          <article>
+            <header>
+              <h1 className="mb-0 py-2">{post.frontmatter.title}</h1>
+            </header>
+            <section className="py-2 font-light">{`Added ${snippetDateString(
+              file.birthTime
+            )}`}</section>
+            <section
+              className="rounded-md bg-indigo-300 border-solid border-indigo-400 px-3"
+              dangerouslySetInnerHTML={{ __html: post.excerpt }}
+            />
+            <section dangerouslySetInnerHTML={{ __html: post.html }} />
+            <Code codeString={codeSnippet} language={language} />
+          </article>
+        </main>
+      </Layout>
+      <Footer />
+    </Theme>
   )
 }
 

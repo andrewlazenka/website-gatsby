@@ -1,22 +1,18 @@
 import React from 'react'
-import { Location } from '@reach/router'
+import { useLocation } from '@reach/router'
 import { Link } from 'gatsby'
-import { css } from 'styled-components'
+import clsx from 'classnames'
 
-const LinkStyles = css`
-  color: ${props => props.theme.blueColor};
-  cursor: pointer;
-
-  :hover {
-    text-decoration: underline;
-  }
-`
-
-export const InternalLink = props => <Link css={LinkStyles} {...props} />
+export const InternalLink = props => (
+  <Link
+    className=" text-base cursor-pointer text-indigo-500 transition-colors duration-300 ease-in-out hover:text-indigo-300"
+    {...props}
+  />
+)
 
 export const ExternalLink = ({ to, children, ...props }) => (
   <a
-    css={LinkStyles}
+    className="cursor-pointer text-indigo-500 transition-colors duration-300 ease-in-out hover:text-indigo-300"
     href={to}
     target="_blank"
     rel="noopener noreferrer"
@@ -26,28 +22,19 @@ export const ExternalLink = ({ to, children, ...props }) => (
   </a>
 )
 
-export const LocationAwareLink = props => (
-  <Location>
-    {({ location }) => {
-      const [, baseRoute] = location.pathname.split('/')
-      const activeRoute =
-        location.pathname !== '/' && props.to === `/${baseRoute}`
+export const LocationAwareLink = props => {
+  const location = useLocation()
+  const [, baseRoute] = location.pathname.split('/')
+  const isActiveRoute =
+    location.pathname !== '/' && props.to === `/${baseRoute}`
 
-      const activeRouteStyle = activeRoute
-        ? css`
-            color: ${({ theme }) => theme.blueColor};
-            font-size: 16px;
-            text-transform: uppercase;
-            height: inherit;
-          `
-        : css`
-            color: ${({ theme }) => theme.fontColor};
-            font-size: 16px;
-            text-transform: uppercase;
-            height: inherit;
-          `
-
-      return <InternalLink css={activeRouteStyle} {...props} />
-    }}
-  </Location>
-)
+  return (
+    <Link
+      className={clsx(
+        'uppercase text-base cursor-pointer transition-colors duration-300 ease-in-out hover:text-indigo-300',
+        isActiveRoute ? 'text-indigo-500' : 'text-gray-900 dark:text-gray-50'
+      )}
+      {...props}
+    />
+  )
+}

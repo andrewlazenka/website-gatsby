@@ -1,8 +1,5 @@
-import styled from 'styled-components'
+import React from 'react'
 
-export default styled.header`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 16px;
-`
+export default props => (
+  <header className="flex justify-between items-center py-2" {...props} />
+)
