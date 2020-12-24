@@ -29,11 +29,12 @@ export default function Home({ data }) {
   return (
     <Theme>
       <Helmet title="Andrew Lazenka" />
-      <HeroBanner>
+      <div className="relative w-full pt-24">
+        <HeroBanner />
         <Header />
         <div className="flex justify-between w-3/4 max-w-screen-md mx-auto my-0 flex-col lg:flex-row items-center">
           <div className="flex flex-col text-xl justify-center py-8 lg:py-0 lg:max-w-md max-w-lg text-center">
-            <span>
+            <span className="z-10">
               Hi, I'm <b>Andrew</b>! I love full-stack development, architecting
               robust devops solutions, collaborating, problem solving, and most
               of all ☕️
@@ -45,10 +46,10 @@ export default function Home({ data }) {
             alt="Andrew Headshot"
           />
         </div>
-      </HeroBanner>
+      </div>
       <main className="mx-auto my-0 py-12 px-6 max-w-3xl w-3/4">
         <section>
-          <h3>About</h3>
+          <h3 id="about">About</h3>
           Since 2018 I've been working at{' '}
           <ExternalLink to="https://www.innovasium.com">
             Innovasium Digital
@@ -97,7 +98,7 @@ export default function Home({ data }) {
           has been releasing new music on a regular basis, check us out!
         </section>
         <section className="mt-8">
-          <h3>Work & Experience</h3>
+          <h3 id="work-and-experience">Work & Experience</h3>
           {Array.from(data.workExperiences.nodes)
             .sort(sortFilterWork)
             .splice(0, MAX_WORK_EXP)
@@ -115,7 +116,7 @@ export default function Home({ data }) {
                 />
               )
             })}
-          <InternalLink to="/work-experience">See more</InternalLink>
+          <InternalLink to="/work-experience">See all</InternalLink>
         </section>
       </main>
       <Footer />

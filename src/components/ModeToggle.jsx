@@ -6,7 +6,7 @@ import SunIcon from '../assets/svg/sun.inline.svg'
 import MoonIcon from '../assets/svg/moon.inline.svg'
 
 const baseIconStyle =
-  'absolute cursor-pointer transition-all duration-500 ease-in-out hover:text-gray-400 text-gray-50'
+  'absolute cursor-pointer transition duration-500 ease-in-out text-gray-900 dark:text-gray-50 hover:text-indigo-300 dark:hover:text-indigo-300 text-gray-50'
 const hiddenStyle = 'opacity-0 invisible'
 const shownStyle = 'opacity-100 visible'
 
