@@ -10,7 +10,6 @@ import Layout from '../../components/Layout'
 import PageHeader from '../../components/PageHeader'
 import Theme from '../../components/Theme'
 import WorkExperience from '../../components/WorkExperience'
-import { ThemeProvider } from '../../contexts/ThemeContext'
 
 const PageMain = styled.main`
   div:nth-child(n + 2) {
@@ -28,36 +27,34 @@ export default function Home({ data }) {
   data.workExperiences.nodes.sort(sortFilterWork)
 
   return (
-    <ThemeProvider>
-      <Theme>
-        <Helmet title="Andrew Lazenka" />
-        <Header />
-        <Layout>
-          <PageHeader>
-            <h1 style={{ marginBottom: 0 }}>Work Experience</h1>
-          </PageHeader>
-          <PageMain>
-            <div>
-              {data.workExperiences.nodes.map(workExperience => {
-                const {
-                  company,
-                  position,
-                  startMonth,
-                  startYear,
-                } = workExperience.frontmatter
-                return (
-                  <WorkExperience
-                    key={`${company} - ${position} - ${startMonth} ${startYear}`}
-                    {...workExperience}
-                  />
-                )
-              })}
-            </div>
-          </PageMain>
-        </Layout>
-        <Footer />
-      </Theme>
-    </ThemeProvider>
+    <Theme>
+      <Helmet title="Andrew Lazenka" />
+      <Header />
+      <Layout>
+        <PageHeader>
+          <h1 style={{ marginBottom: 0 }}>Work Experience</h1>
+        </PageHeader>
+        <PageMain>
+          <div>
+            {data.workExperiences.nodes.map(workExperience => {
+              const {
+                company,
+                position,
+                startMonth,
+                startYear,
+              } = workExperience.frontmatter
+              return (
+                <WorkExperience
+                  key={`${company} - ${position} - ${startMonth} ${startYear}`}
+                  {...workExperience}
+                />
+              )
+            })}
+          </div>
+        </PageMain>
+      </Layout>
+      <Footer />
+    </Theme>
   )
 }
 

@@ -11,7 +11,6 @@ import Layout from '../../components/Layout'
 import { InternalLink } from '../../components/Links'
 import PageHeader from '../../components/PageHeader'
 import Theme from '../../components/Theme'
-import { ThemeProvider } from '../../contexts/ThemeContext'
 import { generateSnippetPageSlug } from '../../util'
 
 const Input = styled.input`
@@ -299,59 +298,57 @@ export default function SnippetSearch({ data }) {
   }
 
   return (
-    <ThemeProvider>
-      <Theme>
-        <Helmet title="Snippets - Andrew Lazenka" />
-        <Header />
-        <Layout>
-          <PageHeader>
-            <h1 style={{ marginBottom: 0 }}>Snippets</h1>
-          </PageHeader>
-          <div className="flex justify-between flex-col md:flex-row">
-            <aside className="w-full md:w-1/4" style={{ minWidth: 175 }}>
-              <div className="flex justify-between items-center">
-                <Input
-                  id="seach-snippets"
-                  onChange={e => searchFilteredSnippets(e.target.value)}
-                  placeholder="Find a Snippet"
-                  type="text"
-                />
-              </div>
-              <div className="flex justify-between items-center">
-                <label className="text-indigo-500" htmlFor="snippet-sort">
-                  Sort
-                </label>
-                <Dropdown>
-                  <select
-                    id="snippet-sort"
-                    value={snippetSort}
-                    onChange={e => setSnippetSort(e.target.value)}
-                  >
-                    <option value="title-asc">Title A - Z</option>
-                    <option value="title-desc">Title Z - A</option>
-                  </select>
-                </Dropdown>
-              </div>
-              <SnippetFilters
-                allFilters={filters}
-                appliedFilters={snippetFilters}
-                onChange={filter => {
-                  if (snippetFilters.includes(filter)) {
-                    setSnippetFilters({ type: 'remove', filter })
-                  } else {
-                    setSnippetFilters({ type: 'add', filter })
-                  }
-                }}
+    <Theme>
+      <Helmet title="Snippets - Andrew Lazenka" />
+      <Header />
+      <Layout>
+        <PageHeader>
+          <h1 style={{ marginBottom: 0 }}>Snippets</h1>
+        </PageHeader>
+        <div className="flex justify-between flex-col md:flex-row">
+          <aside className="w-full md:w-1/4" style={{ minWidth: 175 }}>
+            <div className="flex justify-between items-center">
+              <Input
+                id="seach-snippets"
+                onChange={e => searchFilteredSnippets(e.target.value)}
+                placeholder="Find a Snippet"
+                type="text"
               />
-            </aside>
-            <main className="w-full md:w-4/6">
-              <SnippetList snippets={filteredSnippets} sortBy={snippetSort} />
-            </main>
-          </div>
-        </Layout>
-        <Footer />
-      </Theme>
-    </ThemeProvider>
+            </div>
+            <div className="flex justify-between items-center">
+              <label className="text-indigo-500" htmlFor="snippet-sort">
+                Sort
+              </label>
+              <Dropdown>
+                <select
+                  id="snippet-sort"
+                  value={snippetSort}
+                  onChange={e => setSnippetSort(e.target.value)}
+                >
+                  <option value="title-asc">Title A - Z</option>
+                  <option value="title-desc">Title Z - A</option>
+                </select>
+              </Dropdown>
+            </div>
+            <SnippetFilters
+              allFilters={filters}
+              appliedFilters={snippetFilters}
+              onChange={filter => {
+                if (snippetFilters.includes(filter)) {
+                  setSnippetFilters({ type: 'remove', filter })
+                } else {
+                  setSnippetFilters({ type: 'add', filter })
+                }
+              }}
+            />
+          </aside>
+          <main className="w-full md:w-4/6">
+            <SnippetList snippets={filteredSnippets} sortBy={snippetSort} />
+          </main>
+        </div>
+      </Layout>
+      <Footer />
+    </Theme>
   )
 }
 

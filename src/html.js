@@ -11,7 +11,7 @@ export default props => (
       />
       {props.headComponents}
     </head>
-    <body {...props.bodyAttributes} className="light">
+    <body {...props.bodyAttributes}>
       <script
         dangerouslySetInnerHTML={{
           __html: `

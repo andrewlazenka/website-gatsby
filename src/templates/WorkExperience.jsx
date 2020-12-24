@@ -9,7 +9,6 @@ import Layout from '../components/Layout'
 import PageHeader from '../components/PageHeader'
 import Theme from '../components/Theme'
 import { InternalLink } from '../components/Links'
-import { ThemeProvider } from '../contexts/ThemeContext'
 
 export default function SnippetTemplate({ data }) {
   const { frontmatter, html: __html } = data.markdownRemark
@@ -25,23 +24,21 @@ export default function SnippetTemplate({ data }) {
   const startDate = format(new Date(startYear, startMonth), 'MMMM YYYY')
   const endDate = format(new Date(endYear, endMonth), 'MMMM YYYY')
   return (
-    <ThemeProvider>
-      <Theme>
-        <Helmet title={`${title} | Work Experience - Andrew Lazenka`} />
-        <Header />
-        <Layout>
-          <PageHeader>
-            <h3 className="text-indigo-500 mb-0">
-              <InternalLink to="/work-experience">← Work Experience</InternalLink>
-            </h3>
-          </PageHeader>
-          <h1>{company}</h1>
-          <h4>{`${startDate} - ${endDate}`}</h4>
-          <div dangerouslySetInnerHTML={{ __html }} />
-        </Layout>
-        <Footer />
-      </Theme>
-    </ThemeProvider>
+    <Theme>
+      <Helmet title={`${title} | Work Experience - Andrew Lazenka`} />
+      <Header />
+      <Layout>
+        <PageHeader>
+          <h3 className="text-indigo-500 mb-0">
+            <InternalLink to="/work-experience">← Work Experience</InternalLink>
+          </h3>
+        </PageHeader>
+        <h1>{company}</h1>
+        <h4>{`${startDate} - ${endDate}`}</h4>
+        <div dangerouslySetInnerHTML={{ __html }} />
+      </Layout>
+      <Footer />
+    </Theme>
   )
 }
 
