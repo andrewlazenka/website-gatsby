@@ -1,3 +1,4 @@
+/* eslint jsx-a11y/no-onchange: 0 */
 import React from 'react'
 import clsx from 'classnames'
 import { graphql } from 'gatsby'
@@ -175,6 +176,9 @@ function SnippetFilters({ allFilters, appliedFilters, onChange }) {
         <div
           className="flex items-center justify-between cursor-pointer"
           onClick={() => toggleFilterOpen(filterKey)}
+          onKeyUp={() => toggleFilterOpen(filterKey)}
+          role="button"
+          tabIndex={0}
         >
           <div className="text-indigo-500 capitalize">{filterKey}</div>
           <Arrow point={filtersOpen[filterKey] ? 'down' : 'right'} />
