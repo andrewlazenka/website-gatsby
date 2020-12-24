@@ -27,7 +27,7 @@ export default function Home({ data }) {
         <PageHeader>
           <h1 style={{ marginBottom: 0 }}>Work Experience</h1>
         </PageHeader>
-        <main>
+        <main className="py-4">
             {data.workExperiences.nodes.map(workExperience => {
               const {
                 company,

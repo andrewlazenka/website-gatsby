@@ -35,6 +35,12 @@ h3 {
   line-height: 2.625rem;
 }
 
+h4 {
+  margin: 0;
+  padding: 0;
+  text-rendering: optimizeLegibility;
+}
+
 .snippets-input {
   box-sizing: border-box;
   height: 32px;

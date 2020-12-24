@@ -14,6 +14,7 @@ export default function SnippetTemplate({ data }) {
   const { frontmatter, html: __html } = data.markdownRemark
   const {
     company,
+    position,
     endMonth,
     endYear,
     startMonth,
@@ -33,8 +34,9 @@ export default function SnippetTemplate({ data }) {
             <InternalLink to="/work-experience">← Work Experience</InternalLink>
           </h3>
         </PageHeader>
-        <h1>{company}</h1>
-        <h4>{`${startDate} - ${endDate}`}</h4>
+        <h1>{position}</h1>
+        <h3 className="font-medium">{company}</h3>
+        <h4 className="font-normal">{`${startDate} - ${endDate}`}</h4>
         <div dangerouslySetInnerHTML={{ __html }} />
       </Layout>
       <Footer />

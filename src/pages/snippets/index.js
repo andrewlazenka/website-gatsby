@@ -132,15 +132,13 @@ function SnippetList({ snippets, sortBy }) {
         .map(({ excerpt, fileAbsolutePath, frontmatter }) => {
           const slug = generateSnippetPageSlug({ fileAbsolutePath })
           return (
-            <article className="my-2 p-4 pt-2" key={slug}>
+            <article className="py-3 px-4" key={slug}>
               <header>
                 <InternalLink to={slug} key={slug}>
                   <h3>{`${frontmatter.title}`}</h3>
                 </InternalLink>
               </header>
-              <p className="m-0">
-                {excerpt}
-              </p>
+              <p className="m-0">{excerpt}</p>
             </article>
           )
         })
@@ -154,7 +152,7 @@ const Arrow = ({ point = 'right' }) => (
       'h-3 ml-2 transition-transform duration-100 ease-in-out',
       { 'transform rotate-90': point === 'down' },
       { 'transform rotate-270': point === 'up' },
-      { 'transform rotate-180': point === 'left' },
+      { 'transform rotate-180': point === 'left' }
     )}
     alt="Open Close Arrow"
   />
@@ -225,11 +223,11 @@ export default function SnippetSearch({ data }) {
       <Helmet title="Snippets - Andrew Lazenka" />
       <Header />
       <Layout>
-        <PageHeader>
-          <h1 style={{ marginBottom: 0 }}>Snippets</h1>
-        </PageHeader>
         <div className="flex justify-between flex-col md:flex-row">
           <aside className="w-full md:w-1/4" style={{ minWidth: 175 }}>
+            <PageHeader>
+              <h1 style={{ marginBottom: 0 }}>Snippets</h1>
+            </PageHeader>
             <div className="flex justify-between items-center">
               <input
                 id="seach-snippets"

@@ -16,11 +16,12 @@ function WorkExperience({ frontmatter, fileAbsolutePath }) {
   const startDate = format(new Date(startYear, startMonth), 'MMMM YYYY')
   const endDate = format(new Date(endYear, endMonth), 'MMMM YYYY')
   return (
-    <div>
+    <div className="py-3 px-4 pl-0">
       <InternalLink to={generateSnippetPageSlug({ fileAbsolutePath })}>
-        <h4 className="mb-2">{`${company} - ${position}`}</h4>
+        <h3>{position}</h3>
       </InternalLink>
-      <p className="mt-2">{`${startDate} - ${endDate}`}</p>
+      <h4>{company}</h4>
+      <p className="m-0">{`${startDate} - ${endDate}`}</p>
     </div>
   )
 }
