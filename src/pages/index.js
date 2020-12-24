@@ -34,7 +34,7 @@ export default function Home({ data }) {
         <Header />
         <div className="flex justify-between w-3/4 max-w-screen-md mx-auto my-0 flex-col lg:flex-row items-center">
           <div className="flex flex-col text-xl justify-center py-8 lg:py-0 lg:max-w-md max-w-lg text-center">
-            <span className="z-10">
+            <span className="z-0">
               Hi, I'm <b>Andrew</b>! I love full-stack development, architecting
               robust devops solutions, collaborating, problem solving, and most
               of all ☕️

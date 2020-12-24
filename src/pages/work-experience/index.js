@@ -1,6 +1,5 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import styled from 'styled-components'
 import { isBefore } from 'date-fns'
 import { Helmet } from 'react-helmet'
 
@@ -10,12 +9,6 @@ import Layout from '../../components/Layout'
 import PageHeader from '../../components/PageHeader'
 import Theme from '../../components/Theme'
 import WorkExperience from '../../components/WorkExperience'
-
-const PageMain = styled.main`
-  div:nth-child(n + 2) {
-    margin-top: 32px;
-  }
-`
 
 function sortFilterWork(ex1, ex2) {
   const date1 = new Date(ex1.frontmatter.startYear, ex1.frontmatter.startMonth)
@@ -34,8 +27,7 @@ export default function Home({ data }) {
         <PageHeader>
           <h1 style={{ marginBottom: 0 }}>Work Experience</h1>
         </PageHeader>
-        <PageMain>
-          <div>
+        <main>
             {data.workExperiences.nodes.map(workExperience => {
               const {
                 company,
@@ -50,8 +42,7 @@ export default function Home({ data }) {
                 />
               )
             })}
-          </div>
-        </PageMain>
+        </main>
       </Layout>
       <Footer />
     </Theme>

@@ -1,5 +1,5 @@
 import React from 'react'
-import styled, { css } from 'styled-components'
+import clsx from 'classnames'
 import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
 import Fuse from 'fuse.js'
@@ -12,61 +12,6 @@ import { InternalLink } from '../../components/Links'
 import PageHeader from '../../components/PageHeader'
 import Theme from '../../components/Theme'
 import { generateSnippetPageSlug } from '../../util'
-
-const Input = styled.input`
-  box-sizing: border-box;
-  height: 32px;
-  width: 100%;
-  border: 1px solid #dee3e5;
-  border-radius: 4px;
-  background-color: #f5f6f9;
-  color: #000;
-  font-size: 16px;
-  line-height: 22px;
-  padding: 8px;
-  margin: 5px 0;
-
-  ::placeholder {
-    color: #999;
-  }
-
-  :hover {
-    background-color: #f7f8fb;
-  }
-
-  :focus {
-    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.14);
-    background-color: #f7f8fb;
-  }
-`
-
-const Dropdown = styled.div`
-  overflow: hidden;
-  height: 32px;
-  width: auto;
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #eee;
-  cursor: pointer;
-  position: relative;
-  min-width: 100px;
-  margin: 5px 0;
-  box-sizing: border-box;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
-
-  select {
-    background: ${({ theme }) => theme.bgColor};
-    font-size: 14px;
-    border: 1px solid #ccc;
-    height: 32px;
-    border: 0;
-    padding-left: 7px;
-    color: ${({ theme }) => theme.fontColor};
-    transition: color 0.3s ease-in-out;
-    width: auto;
-    min-width: 100px;
-  }
-`
 
 const options = {
   shouldSort: true,
@@ -184,7 +129,7 @@ function SnippetList({ snippets, sortBy }) {
   return snippets.length > 0
     ? snippets
         .sort(sortSnippets)
-        .map(({ birthTime, excerpt, fileAbsolutePath, frontmatter }) => {
+        .map(({ excerpt, fileAbsolutePath, frontmatter }) => {
           const slug = generateSnippetPageSlug({ fileAbsolutePath })
           return (
             <article className="my-2 p-4 pt-2" key={slug}>
@@ -193,11 +138,8 @@ function SnippetList({ snippets, sortBy }) {
                   <h3>{`${frontmatter.title}`}</h3>
                 </InternalLink>
               </header>
-              <p>
-                {excerpt}{' '}
-                <InternalLink to={slug} key={slug}>
-                  View Code →
-                </InternalLink>
+              <p className="m-0">
+                {excerpt}
               </p>
             </article>
           )
@@ -205,37 +147,18 @@ function SnippetList({ snippets, sortBy }) {
     : 'No Snippets found!'
 }
 
-function Arrow({ point = 'right' }) {
-  let transformStyle = css`
-    height: 12px;
-    margin-left: 8px;
-  `
-  if (point === 'down') {
-    transformStyle = [
-      ...transformStyle,
-      css`
-        transform: rotate(90deg);
-      `,
-    ]
-  }
-  if (point === 'up') {
-    transformStyle = [
-      ...transformStyle,
-      css`
-        transform: rotate(270deg);
-      `,
-    ]
-  }
-  if (point === 'left') {
-    transformStyle = [
-      ...transformStyle,
-      css`
-        transform: rotate(180deg);
-      `,
-    ]
-  }
-  return <img src={ArrowRight} alt="Open Close Arrow" css={transformStyle} />
-}
+const Arrow = ({ point = 'right' }) => (
+  <img
+    src={ArrowRight}
+    className={clsx(
+      'h-3 ml-2 transition-transform duration-100 ease-in-out',
+      { 'transform rotate-90': point === 'down' },
+      { 'transform rotate-270': point === 'up' },
+      { 'transform rotate-180': point === 'left' },
+    )}
+    alt="Open Close Arrow"
+  />
+)
 
 function SnippetFilters({ allFilters, appliedFilters, onChange }) {
   const [filtersOpen, setFiltersOpen] = React.useState({})
@@ -308,10 +231,11 @@ export default function SnippetSearch({ data }) {
         <div className="flex justify-between flex-col md:flex-row">
           <aside className="w-full md:w-1/4" style={{ minWidth: 175 }}>
             <div className="flex justify-between items-center">
-              <Input
+              <input
                 id="seach-snippets"
+                className="snippets-input"
                 onChange={e => searchFilteredSnippets(e.target.value)}
-                placeholder="Find a Snippet"
+                placeholder="Find a snippet"
                 type="text"
               />
             </div>
@@ -319,7 +243,7 @@ export default function SnippetSearch({ data }) {
               <label className="text-indigo-500" htmlFor="snippet-sort">
                 Sort
               </label>
-              <Dropdown>
+              <div className="snippets-dropdown">
                 <select
                   id="snippet-sort"
                   value={snippetSort}
@@ -328,7 +252,7 @@ export default function SnippetSearch({ data }) {
                   <option value="title-asc">Title A - Z</option>
                   <option value="title-desc">Title Z - A</option>
                 </select>
-              </Dropdown>
+              </div>
             </div>
             <SnippetFilters
               allFilters={filters}

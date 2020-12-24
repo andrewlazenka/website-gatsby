@@ -35,6 +35,59 @@ h3 {
   line-height: 2.625rem;
 }
 
+.snippets-input {
+  box-sizing: border-box;
+  height: 32px;
+  width: 100%;
+  border: 1px solid #dee3e5;
+  border-radius: 4px;
+  background-color: #f5f6f9;
+  color: #000;
+  font-size: 16px;
+  line-height: 22px;
+  padding: 8px;
+  margin: 5px 0;
+}
+
+.snippets-input::placeholder {
+  color: #999;
+}
+
+.snippets-input:hover {
+  background-color: #f7f8fb;
+}
+
+.snippets-input:focus {
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.14);
+  background-color: #f7f8fb;
+}
+
+.snippets-dropdown {
+  overflow: hidden;
+  height: 32px;
+  width: auto;
+  display: inline-block;
+  border-radius: 4px;
+  border: 1px solid #eee;
+  cursor: pointer;
+  position: relative;
+  min-width: 100px;
+  margin: 5px 0;
+  box-sizing: border-box;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
+}
+
+.snippets-dropdown select {
+  font-size: 14px;
+  border: 1px solid #ccc;
+  height: 32px;
+  border: 0;
+  padding-left: 7px;
+  transition: color 0.3s ease-in-out;
+  width: auto;
+  min-width: 100px;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
