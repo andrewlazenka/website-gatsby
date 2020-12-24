@@ -76,13 +76,11 @@ export default function Home({ data }) {
           <ExternalLink to="https://rubyonrails.org/">
             Ruby on Rails
           </ExternalLink>
-          . For frontend development projects I've been mainly using{' '}
-          <ExternalLink to="https://www.gatsbyjs.org">GatsbyJS</ExternalLink>{' '}
-          and{' '}
-          <ExternalLink to="https://www.styled-components.com/">
-            Styled Components
+          . For frontend development projects I've been exploring{' '}
+          <ExternalLink to="https://www.tailwindcss.com">
+            TailwindCSS
           </ExternalLink>{' '}
-          since I came across them, and they were used to build this site!
+          which has been used to build this site!
           <br />
           <br />
           In my spare time, I enjoy writing and contributing open source
