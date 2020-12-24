@@ -48,7 +48,7 @@ export default () => {
       </div>
       <div className="flex">
         {menuItems.map(({ name, to }, index) => (
-          <div className="hidden md:flex items-center p-7">
+          <div key={name} className="hidden md:flex items-center p-7">
             <LocationAwareLink key={`${name}-${index}`} to={to}>
               {name}
             </LocationAwareLink>

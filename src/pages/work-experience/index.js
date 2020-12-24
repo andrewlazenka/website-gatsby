@@ -10,7 +10,7 @@ import Layout from '../../components/Layout'
 import PageHeader from '../../components/PageHeader'
 import Theme from '../../components/Theme'
 import WorkExperience from '../../components/WorkExperience'
-import { ModeProvider } from '../../contexts/ModeContext'
+import { ThemeProvider } from '../../contexts/ThemeContext'
 
 const PageMain = styled.main`
   div:nth-child(n + 2) {
@@ -28,7 +28,7 @@ export default function Home({ data }) {
   data.workExperiences.nodes.sort(sortFilterWork)
 
   return (
-    <ModeProvider>
+    <ThemeProvider>
       <Theme>
         <Helmet title="Andrew Lazenka" />
         <Header />
@@ -57,7 +57,7 @@ export default function Home({ data }) {
         </Layout>
         <Footer />
       </Theme>
-    </ModeProvider>
+    </ThemeProvider>
   )
 }
 

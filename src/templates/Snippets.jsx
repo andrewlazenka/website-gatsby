@@ -9,7 +9,7 @@ import Layout from '../components/Layout'
 import { InternalLink } from '../components/Links'
 import PageHeader from '../components/PageHeader'
 import Theme from '../components/Theme'
-import { ModeProvider } from '../contexts/ModeContext'
+import { ThemeProvider } from '../contexts/ThemeContext'
 import { snippetDateString } from '../util'
 
 const getSnippetCode = baseCodeElement =>
@@ -24,7 +24,7 @@ function SnippetTemplate({ data }) {
   )
   const codeSnippet = getSnippetCode(baseCodeElement)
   return (
-    <ModeProvider>
+    <ThemeProvider>
       <Theme>
         <Helmet
           title={`${post.frontmatter.title} Snippet - Andrew Lazenka`}
@@ -53,7 +53,7 @@ function SnippetTemplate({ data }) {
         </Layout>
         <Footer />
       </Theme>
-    </ModeProvider>
+    </ThemeProvider>
   )
 }
 

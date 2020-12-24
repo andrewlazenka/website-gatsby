@@ -10,7 +10,7 @@ import HeroBanner from '../components/HeroBanner'
 import { ExternalLink, InternalLink } from '../components/Links'
 import Theme from '../components/Theme'
 import WorkExperience from '../components/WorkExperience'
-import { ModeProvider } from '../contexts/ModeContext'
+import { ThemeProvider } from '../contexts/ThemeContext'
 
 const MAX_WORK_EXP = 3
 
@@ -28,7 +28,7 @@ function sortFilterWork(ex1, ex2) {
 
 export default function Home({ data }) {
   return (
-    <ModeProvider>
+    <ThemeProvider>
       <Theme>
         <Helmet title="Andrew Lazenka" />
         <HeroBanner>
@@ -122,7 +122,7 @@ export default function Home({ data }) {
         </main>
         <Footer />
       </Theme>
-    </ModeProvider>
+    </ThemeProvider>
   )
 }
 

@@ -11,7 +11,7 @@ import Layout from '../../components/Layout'
 import { InternalLink } from '../../components/Links'
 import PageHeader from '../../components/PageHeader'
 import Theme from '../../components/Theme'
-import { ModeProvider } from '../../contexts/ModeContext'
+import { ThemeProvider } from '../../contexts/ThemeContext'
 import { generateSnippetPageSlug } from '../../util'
 
 const Input = styled.input`
@@ -299,7 +299,7 @@ export default function SnippetSearch({ data }) {
   }
 
   return (
-    <ModeProvider>
+    <ThemeProvider>
       <Theme>
         <Helmet title="Snippets - Andrew Lazenka" />
         <Header />
@@ -351,7 +351,7 @@ export default function SnippetSearch({ data }) {
         </Layout>
         <Footer />
       </Theme>
-    </ModeProvider>
+    </ThemeProvider>
   )
 }
 

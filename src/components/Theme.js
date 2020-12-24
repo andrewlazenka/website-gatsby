@@ -1,6 +1,6 @@
 import React from 'react'
 import { ThemeProvider, createGlobalStyle } from 'styled-components'
-import { ModeContext } from '../contexts/ModeContext'
+import { ThemeContext } from '../contexts/ThemeContext'
 
 const blueColor = '#0aa1d2'
 const black = '#000'
@@ -72,12 +72,13 @@ const GlobalStyle = createGlobalStyle`
 `
 
 export default function Theme({ children }) {
-  const { darkMode } = React.useContext(ModeContext)
-  const theme = darkMode ? darkTheme : lightTheme
+  const { isDarkTheme } = React.useContext(ThemeContext)
+  const theme = isDarkTheme ? darkTheme : lightTheme
+
   return (
     <ThemeProvider theme={theme}>
       <>
-        <GlobalStyle darkMode={darkMode} />
+        <GlobalStyle darkMode={isDarkTheme} />
         {children}
       </>
     </ThemeProvider>

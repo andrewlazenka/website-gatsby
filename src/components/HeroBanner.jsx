@@ -1,17 +1,17 @@
 import React from 'react'
 import clsx from 'classnames'
 
-import { ModeContext } from '../contexts/ModeContext'
+import { ThemeContext } from '../contexts/ThemeContext'
 
 export default props => {
-  const { darkMode } = React.useContext(ModeContext)
+  const { isDarkTheme } = React.useContext(ThemeContext)
 
   return (
     <div
       className={clsx(
         'bg-cover bg-left-top bg-repeat w-full pt-24 transition-colors duration-500 ease-in-out',
         {
-          'bg-indigo-500': !darkMode,
+          'bg-indigo-500': !isDarkTheme,
         }
       )}
       style={{
