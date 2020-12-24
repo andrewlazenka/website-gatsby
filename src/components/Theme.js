@@ -38,7 +38,8 @@ const GlobalStyle = createGlobalStyle`
       props.darkMode ? darkTheme.bgColor : lightTheme.bgColor};
     color: ${props =>
       props.darkMode ? darkTheme.fontColor : lightTheme.fontColor};
-    font-family: Montserrat, sans-serif;
+    font-family: Roboto, sans-serif;
+    font-weight: 400;
     line-height: 1.75;
     margin: 0;
     transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;

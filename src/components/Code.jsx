@@ -1,21 +1,9 @@
 import React from 'react'
-import { css } from 'styled-components'
 import theme from 'prism-react-renderer/themes/nightOwl'
 import Highlight, { defaultProps } from 'prism-react-renderer'
+import clsx from 'classnames'
 
 const RE = /{([\d,-]+)}/
-
-const wrapperStyles = css`
-  overflow: auto;
-  font-size: 16px;
-  border-radius: 6px;
-`
-
-const preStyles = css`
-  overflow: auto;
-  border-radius: 6px;
-  padding: 8px;
-`
 
 function calculateLinesToHighlight(meta) {
   if (RE.test(meta)) {
@@ -44,8 +32,11 @@ function Code({ codeString, language, metastring }) {
       theme={theme}
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
-        <div css={wrapperStyles}>
-          <pre className={className} style={style} css={preStyles}>
+        <div className="text-xl rounded-lg" style={{ overflow: 'auto' }}>
+          <pre
+            className={clsx('p-2 rounded-lg', className)}
+            style={{ ...style, overflow: 'auto' }}
+          >
             {tokens.map((line, i) => (
               <div
                 key={i}
@@ -56,12 +47,8 @@ function Code({ codeString, language, metastring }) {
                 })}
               >
                 <span
-                  css={css`
-                    display: inline-block;
-                    width: 2em;
-                    user-select: none;
-                    opacity: 0.3;
-                  `}
+                  className="inline-block w-8 opacity-30"
+                  style={{ userSelect: 'none' }}
                 >
                   {i + 1}
                 </span>

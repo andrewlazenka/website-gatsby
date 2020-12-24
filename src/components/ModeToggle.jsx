@@ -1,26 +1,43 @@
 import React from 'react'
-import Toggle from 'react-toggle'
 import Tooltip from '@reach/tooltip'
+import clsx from 'classnames'
 
+import SunIcon from '../assets/svg/sun.inline.svg'
+import MoonIcon from '../assets/svg/moon.inline.svg'
 import { ModeContext } from '../contexts/ModeContext'
 
-import 'react-toggle/style.css'
 import '@reach/tooltip/styles.css'
-import './ModeToggle.css'
+
+const baseIconStyle =
+  'absolute cursor-pointer transition-all duration-500 ease-in-out hover:text-gray-400 text-gray-50'
+const hiddenStyle = 'opacity-0 invisible'
+const shownStyle = 'opacity-100 visible'
 
 function ModeToggle() {
   const { darkMode, setDarkMode } = React.useContext(ModeContext)
   return (
-    <Tooltip label={`${darkMode ? 'Dark' : 'Light'} Theme`}>
-      <span style={{ lineHeight: 0 }}>
-        <Toggle
-          checked={darkMode}
-          className="mode-toggle"
-          icons={false}
-          onChange={() => setDarkMode(!darkMode)}
-        />
-      </span>
-    </Tooltip>
+    <>
+      <Tooltip label={`${darkMode ? 'Dark' : 'Light'} Theme`}>
+        <span className="relative w-6 h-6" style={{ lineHeight: 0 }}>
+          <SunIcon
+            className={clsx(
+              baseIconStyle,
+              { [shownStyle]: !darkMode },
+              { [hiddenStyle]: darkMode }
+            )}
+            onClick={() => setDarkMode(true)}
+          />
+          <MoonIcon
+            className={clsx(
+              baseIconStyle,
+              { [hiddenStyle]: !darkMode },
+              { [shownStyle]: darkMode }
+            )}
+            onClick={() => setDarkMode(false)}
+          />
+        </span>
+      </Tooltip>
+    </>
   )
 }
 

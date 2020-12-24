@@ -14,76 +14,6 @@ import Theme from '../../components/Theme'
 import { ModeProvider } from '../../contexts/ModeContext'
 import { generateSnippetPageSlug } from '../../util'
 
-const SearchSnippetWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-
-  @media only screen and (max-width: 768px) {
-    flex-direction: column;
-  }
-`
-
-const SnippetFilterLabel = styled.label`
-  color: ${props => props.theme.blueColor};
-`
-
-const SnippetFilterKey = styled.div`
-  color: ${props => props.theme.blueColor};
-  text-transform: capitalize;
-`
-
-const SnippetFilterValues = styled.div`
-  text-transform: uppercase;
-`
-
-const SnippetContainer = styled.article`
-  margin: 8px 0;
-  padding: 16px;
-  padding-top: 8px;
-`
-
-const SnippetFilterWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`
-
-const SnippetFilterContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-`
-
-const FilterToggle = styled.div`
-  align-items: center;
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-`
-
-const FilterToggleWrapper = styled.div`
-  height: 32px;
-  margin: 5px 0;
-`
-
-const Aside = styled.aside`
-  width: 25%;
-  min-width: 175px;
-
-  @media only screen and (max-width: 768px) {
-    width: 100%;
-  }
-`
-
-const Main = styled.main`
-  width: 67%;
-
-  @media only screen and (max-width: 768px) {
-    width: 100%;
-  }
-`
-
 const Input = styled.input`
   box-sizing: border-box;
   height: 32px;
@@ -258,7 +188,7 @@ function SnippetList({ snippets, sortBy }) {
         .map(({ birthTime, excerpt, fileAbsolutePath, frontmatter }) => {
           const slug = generateSnippetPageSlug({ fileAbsolutePath })
           return (
-            <SnippetContainer key={slug}>
+            <article className="my-2 p-4 pt-2" key={slug}>
               <header>
                 <InternalLink to={slug} key={slug}>
                   <h3>{`${frontmatter.title}`}</h3>
@@ -270,7 +200,7 @@ function SnippetList({ snippets, sortBy }) {
                   View Code →
                 </InternalLink>
               </p>
-            </SnippetContainer>
+            </article>
           )
         })
     : 'No Snippets found!'
@@ -321,16 +251,22 @@ function SnippetFilters({ allFilters, appliedFilters, onChange }) {
 
   return Object.keys(allFilters).map(filterKey => (
     <React.Fragment key={`filter-${filterKey}`}>
-      <FilterToggleWrapper>
-        <FilterToggle onClick={() => toggleFilterOpen(filterKey)}>
-          <SnippetFilterKey>{filterKey}</SnippetFilterKey>
+      <div className="h-8 my-3">
+        <div
+          className="flex items-center justify-between cursor-pointer"
+          onClick={() => toggleFilterOpen(filterKey)}
+        >
+          <div className="text-indigo-500 capitalize">{filterKey}</div>
           <Arrow point={filtersOpen[filterKey] ? 'down' : 'right'} />
-        </FilterToggle>
-      </FilterToggleWrapper>
+        </div>
+      </div>
       {filtersOpen[filterKey] && (
-        <SnippetFilterContainer>
+        <div className="flex flex-col flex-wrap">
           {allFilters[filterKey].map(filter => (
-            <SnippetFilterValues key={`filter-value-${filter}`}>
+            <div
+              className={filterKey === 'language' ? 'uppercase' : 'capitalize'}
+              key={`filter-value-${filter}`}
+            >
               <input
                 type="checkbox"
                 id={`${filter}-checkbox`}
@@ -338,9 +274,9 @@ function SnippetFilters({ allFilters, appliedFilters, onChange }) {
                 onChange={() => onChange(filter)}
               />
               <label htmlFor={`${filter}-checkbox`}>{filter}</label>
-            </SnippetFilterValues>
+            </div>
           ))}
-        </SnippetFilterContainer>
+        </div>
       )}
     </React.Fragment>
   ))
@@ -371,20 +307,20 @@ export default function SnippetSearch({ data }) {
           <PageHeader>
             <h1 style={{ marginBottom: 0 }}>Snippets</h1>
           </PageHeader>
-          <SearchSnippetWrapper>
-            <Aside>
-              <SnippetFilterWrapper>
+          <div className="flex justify-between flex-col md:flex-row">
+            <aside className="w-full md:w-1/4" style={{ minWidth: 175 }}>
+              <div className="flex justify-between items-center">
                 <Input
                   id="seach-snippets"
                   onChange={e => searchFilteredSnippets(e.target.value)}
                   placeholder="Find a Snippet"
                   type="text"
                 />
-              </SnippetFilterWrapper>
-              <SnippetFilterWrapper>
-                <SnippetFilterLabel htmlFor="snippet-sort">
+              </div>
+              <div className="flex justify-between items-center">
+                <label className="text-indigo-500" htmlFor="snippet-sort">
                   Sort
-                </SnippetFilterLabel>
+                </label>
                 <Dropdown>
                   <select
                     id="snippet-sort"
@@ -395,7 +331,7 @@ export default function SnippetSearch({ data }) {
                     <option value="title-desc">Title Z - A</option>
                   </select>
                 </Dropdown>
-              </SnippetFilterWrapper>
+              </div>
               <SnippetFilters
                 allFilters={filters}
                 appliedFilters={snippetFilters}
@@ -407,11 +343,11 @@ export default function SnippetSearch({ data }) {
                   }
                 }}
               />
-            </Aside>
-            <Main>
+            </aside>
+            <main className="w-full md:w-4/6">
               <SnippetList snippets={filteredSnippets} sortBy={snippetSort} />
-            </Main>
-          </SearchSnippetWrapper>
+            </main>
+          </div>
         </Layout>
         <Footer />
       </Theme>

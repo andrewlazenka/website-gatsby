@@ -9,7 +9,7 @@ export default props => {
   return (
     <div
       className={clsx(
-        'bg-cover bg-left-top bg-repeat w-full pt-24 transition-colors duration-450 ease-in-out',
+        'bg-cover bg-left-top bg-repeat w-full pt-24 transition-colors duration-500 ease-in-out',
         {
           'bg-indigo-500': !darkMode,
         }

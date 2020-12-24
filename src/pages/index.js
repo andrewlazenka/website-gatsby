@@ -33,7 +33,7 @@ export default function Home({ data }) {
         <Helmet title="Andrew Lazenka" />
         <HeroBanner>
           <Header />
-          <div className="flex justify-between w-9/12 max-w-screen-md mx-auto my-0 flex-col lg:flex-row items-center">
+          <div className="flex justify-between w-3/4 max-w-screen-md mx-auto my-0 flex-col lg:flex-row items-center">
             <div className="flex flex-col text-xl justify-center py-8 lg:py-0 lg:max-w-md max-w-lg text-center">
               <span>
                 Hi, I'm <b>Andrew</b>! I love full-stack development,
@@ -48,7 +48,7 @@ export default function Home({ data }) {
             />
           </div>
         </HeroBanner>
-        <main className="mx-auto my-0 py-12 px-6 max-w-3xl w-9/12">
+        <main className="mx-auto my-0 py-12 px-6 max-w-3xl w-3/4">
           <section>
             <h3>About</h3>
             Since 2018 I've been working at{' '}
