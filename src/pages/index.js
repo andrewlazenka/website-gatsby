@@ -1,60 +1,18 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
-import styled from 'styled-components'
 import { isAfter, isBefore } from 'date-fns'
 import { Helmet } from 'react-helmet'
 
 import Footer from '../components/Footer'
 import Header from '../components/Header'
 import HeroBanner from '../components/HeroBanner'
-import Layout from '../components/Layout'
 import { ExternalLink, InternalLink } from '../components/Links'
 import Theme from '../components/Theme'
 import WorkExperience from '../components/WorkExperience'
 import { ModeProvider } from '../contexts/ModeContext'
 
 const MAX_WORK_EXP = 3
-
-const AndrewHeadshot = styled(Img)`
-  height: 400px;
-  width: 277px;
-`
-
-const HeroBannerContentContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  height: inherit;
-  width: 70%;
-  max-width: 700px;
-  margin: 0 auto;
-
-  @media only screen and (max-width: 1024px) {
-    flex-direction: column-reverse;
-    align-items: center;
-    padding-bottom: 16px;
-  }
-`
-
-const AndrewInfoContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  font-size: 1.25em;
-  justify-content: center;
-  max-width: 400px;
-  color: rgba(255, 255, 255, 0.88);
-
-  @media only screen and (max-width: 1024px) {
-    max-width: 430px;
-    text-align: center;
-  }
-`
-
-const PageMain = styled.main`
-  div:nth-child(n + 2) {
-    margin-top: 32px;
-  }
-`
 
 function sortFilterWork(ex1, ex2) {
   const date1 = new Date(ex1.frontmatter.startYear, ex1.frontmatter.startMonth)
@@ -75,98 +33,93 @@ export default function Home({ data }) {
         <Helmet title="Andrew Lazenka" />
         <HeroBanner>
           <Header />
-          <HeroBannerContentContainer>
-            <AndrewInfoContainer>
+          <div className="flex justify-between w-9/12 max-w-screen-md mx-auto my-0 flex-col lg:flex-row items-center">
+            <div className="flex flex-col text-xl justify-center py-8 lg:py-0 lg:max-w-md max-w-lg text-center">
               <span>
                 Hi, I'm <b>Andrew</b>! I love full-stack development,
                 architecting robust devops solutions, collaborating, problem
                 solving, and most of all ☕️
               </span>
-            </AndrewInfoContainer>
-            <AndrewHeadshot
+            </div>
+            <Img
+              style={{ height: 400, width: 275 }}
               fluid={data.andrewHeadshot.childImageSharp.fluid}
               alt="Andrew Headshot"
             />
-          </HeroBannerContentContainer>
+          </div>
         </HeroBanner>
-        <Layout>
-          <PageMain>
-            <div>
-              <h3>About</h3>
-              Since 2018 I've been working at{' '}
-              <ExternalLink to="https://www.innovasium.com">
-                Innovasium Digital
-              </ExternalLink>{' '}
-              as a development team lead, doing full-stack web development and
-              architecting modern dev ops solutions.{' '}
-              <InternalLink to="/work-experience/innovasium-2018">
-                Find out more about that here.
-              </InternalLink>
-              <br />
-              <br />
-              I completed my undergraduate studies at Queen's University and
-              received my Bachelor in Computer Science with a specialization in
-              Software Design.
-              <br />
-              <br />
-              I have a passion for learning new technologies and
-              incorporating them into my work. Right now I am exploring
-              highly performant, resilient and scalable backend solutions using
-              {' '}
-              <ExternalLink to="https://elixir-lang.org/">
-                Elixir
-              </ExternalLink>
-              ,{' '}
-              <ExternalLink to="https://golang.org/">
-                Go
-              </ExternalLink>, and{' '}
-              <ExternalLink to="https://rubyonrails.org/">
-                Ruby on Rails
-              </ExternalLink>.
-              For frontend development projects I've been mainly using{' '}
-              <ExternalLink to="https://www.gatsbyjs.org">
-                GatsbyJS
-              </ExternalLink>{' '}
-              and{' '}
-              <ExternalLink to="https://www.styled-components.com/">
-                Styled Components
-              </ExternalLink>{' '}
-              since I came across them, and they were used to build this site!
-              <br />
-              <br />
-              In my spare time, I enjoy writing and contributing open
-              source software which you can find{' '}
-              <ExternalLink to="https://github.com/ALazenka">
-                on my GitHub
-              </ExternalLink>. Writing, playing and performing music is also a big passion of mine.
-              My band{' '}
-              <ExternalLink to="https://prettyyoungthangband.com">
-                Pretty Young Thang
-              </ExternalLink> has been releasing new music on a regular basis, check us out!
-            </div>
-            <div>
-              <h3>Work & Experience</h3>
-              {Array.from(data.workExperiences.nodes)
-                .sort(sortFilterWork)
-                .splice(0, MAX_WORK_EXP)
-                .map(workExperience => {
-                  const {
-                    company,
-                    position,
-                    startMonth,
-                    startYear,
-                  } = workExperience.frontmatter
-                  return (
-                    <WorkExperience
-                      key={`${company} - ${position} - ${startMonth} ${startYear}`}
-                      {...workExperience}
-                    />
-                  )
-                })}
-              <InternalLink to="/work-experience">See more</InternalLink>
-            </div>
-          </PageMain>
-        </Layout>
+        <main className="mx-auto my-0 py-12 px-6 max-w-3xl w-9/12">
+          <section>
+            <h3>About</h3>
+            Since 2018 I've been working at{' '}
+            <ExternalLink to="https://www.innovasium.com">
+              Innovasium Digital
+            </ExternalLink>{' '}
+            as a development team lead, doing full-stack web development and
+            architecting modern dev ops solutions.{' '}
+            <InternalLink to="/work-experience/innovasium-2018">
+              Find out more about that here
+            </InternalLink>
+            .
+            <br />
+            <br />
+            I completed my undergraduate studies at Queen's University and
+            received my Bachelor in Computer Science with a specialization in
+            Software Design.
+            <br />
+            <br />I have a passion for learning new technologies and
+            incorporating them into my work. Right now I am exploring highly
+            performant, resilient and scalable backend solutions using{' '}
+            <ExternalLink to="https://elixir-lang.org/">
+              Elixir
+            </ExternalLink>,{' '}
+            <ExternalLink to="https://golang.org/">Go</ExternalLink>, and{' '}
+            <ExternalLink to="https://rubyonrails.org/">
+              Ruby on Rails
+            </ExternalLink>
+            . For frontend development projects I've been mainly using{' '}
+            <ExternalLink to="https://www.gatsbyjs.org">GatsbyJS</ExternalLink>{' '}
+            and{' '}
+            <ExternalLink to="https://www.styled-components.com/">
+              Styled Components
+            </ExternalLink>{' '}
+            since I came across them, and they were used to build this site!
+            <br />
+            <br />
+            In my spare time, I enjoy writing and contributing open source
+            software which you can find{' '}
+            <ExternalLink to="https://github.com/ALazenka">
+              on my GitHub
+            </ExternalLink>
+            . Writing, producing and performing music is also a big passion of
+            mine. My band{' '}
+            <ExternalLink to="https://prettyyoungthangband.com">
+              Pretty Young Thang
+            </ExternalLink>{' '}
+            has been releasing new music on a regular basis, check us out!
+          </section>
+          <section className="mt-8">
+            <h3>Work & Experience</h3>
+            {Array.from(data.workExperiences.nodes)
+              .sort(sortFilterWork)
+              .splice(0, MAX_WORK_EXP)
+              .map(workExperience => {
+                const {
+                  company,
+                  position,
+                  startMonth,
+                  startYear,
+                } = workExperience.frontmatter
+                return (
+                  <WorkExperience
+                    key={`${company} - ${position} - ${startMonth} ${startYear}`}
+                    {...workExperience}
+                  />
+                )
+              })}
+            <InternalLink to="/work-experience">See more</InternalLink>
+          </section>
+        </main>
         <Footer />
       </Theme>
     </ModeProvider>

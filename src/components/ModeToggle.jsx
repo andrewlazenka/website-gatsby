@@ -11,7 +11,7 @@ import './ModeToggle.css'
 function ModeToggle() {
   const { darkMode, setDarkMode } = React.useContext(ModeContext)
   return (
-    <Tooltip label={`Toggle Theme - ${darkMode ? 'Light' : 'Dark'}`}>
+    <Tooltip label={`${darkMode ? 'Dark' : 'Light'} Theme`}>
       <span style={{ lineHeight: 0 }}>
         <Toggle
           checked={darkMode}

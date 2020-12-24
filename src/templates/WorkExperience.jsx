@@ -1,5 +1,5 @@
 import React from 'react'
-import { graphql, Link } from 'gatsby'
+import { graphql } from 'gatsby'
 import styled from 'styled-components'
 import Helmet from 'react-helmet'
 import { format } from 'date-fns'
@@ -9,6 +9,7 @@ import Footer from '../components/Footer'
 import Layout from '../components/Layout'
 import PageHeader from '../components/PageHeader'
 import Theme from '../components/Theme'
+import { InternalLink } from '../components/Links'
 import { ModeProvider } from '../contexts/ModeContext'
 
 const WorkTemplateContainer = styled.div``
@@ -20,6 +21,7 @@ const PageTitle = styled.h3`
 
 export default function SnippetTemplate({ data }) {
   const { frontmatter, html: __html } = data.markdownRemark
+  console.log("🚀 ~ file: WorkExperience.jsx ~ line 24 ~ SnippetTemplate ~ __html", __html)
   const {
     company,
     endMonth,
@@ -39,7 +41,7 @@ export default function SnippetTemplate({ data }) {
         <Layout>
           <PageHeader>
             <PageTitle>
-              <Link to="/work-experience">← Work Experience</Link>
+              <InternalLink to="/work-experience">← Work Experience</InternalLink>
             </PageTitle>
           </PageHeader>
           <h1>{company}</h1>

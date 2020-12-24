@@ -12,7 +12,7 @@ export const InternalLink = props => (
 
 export const ExternalLink = ({ to, children, ...props }) => (
   <a
-    className="cursor-pointer hover:underline hover:text-indigo-300 text-indigo-500"
+    className="cursor-pointer hover:underline text-indigo-500 transition-colors duration-450 ease-in-out hover:text-indigo-300"
     href={to}
     target="_blank"
     rel="noopener noreferrer"
