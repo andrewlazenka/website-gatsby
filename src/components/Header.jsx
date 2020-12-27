@@ -36,13 +36,13 @@ const MobileMenu = ({ onClose }) => (
 export default () => {
   const [menuModalOpen, setMenuModalOpen] = React.useState(false)
   return (
-    <div className="absolute z-10 top-0 left-0 flex justify-between w-full">
-      <div className="flex items-center p-7">
+    <div className="absolute z-10 top-0 left-0 flex flex-row-reverse sm:flex-row justify-between w-full">
+      <div className="hidden sm:flex items-center p-5 xs:p-7">
         <LocationAwareLink to="/">
           <img
             src={AndrewLogo}
             alt="Site Logo - Andrew Lazenka"
-            className="h-8"
+            className="h-6 xs:h-8"
           />
         </LocationAwareLink>
       </div>
