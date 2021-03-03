@@ -49,7 +49,7 @@ function Footer() {
       </Tooltip>
       <Tooltip label="Resumé">
         <span>
-          <ExternalLink to="/AndrewLazenkaResume.pdf">
+          <ExternalLink to="/andrew-lazenka-resume.pdf">
             <Resume className="h-6 w-6" />
           </ExternalLink>
         </span>
