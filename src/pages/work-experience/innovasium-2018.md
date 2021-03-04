@@ -1,5 +1,4 @@
 ---
-title: 'Innovasium Digital 2018'
 company: 'Innovasium Digital'
 startDay: 23
 startMonth: 3
@@ -7,7 +6,7 @@ startYear: 2018
 endDay: 31
 endMonth: 7
 endYear: 2019
-position: 'Full-Stack Developer & DevOps Architect Internship'
+position: 'Full-Stack Developer Intern'
 ---
 
 ## Notable Contributions

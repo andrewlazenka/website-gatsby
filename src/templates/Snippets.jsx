@@ -24,7 +24,7 @@ function SnippetTemplate({ data }) {
   const codeSnippet = getSnippetCode(baseCodeElement)
   return (
     <Theme>
-      <Helmet title={`${post.frontmatter.title} Snippet - Andrew Lazenka`} />
+      <Helmet title={`${post.frontmatter.title}`} />
       <Header />
       <Layout>
         <PageHeader>

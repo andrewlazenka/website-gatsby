@@ -1,5 +1,4 @@
 ---
-title: 'Innovasium Digital 2017'
 company: 'Innovasium Digital'
 startDay: 1
 startMonth: 4
@@ -7,7 +6,7 @@ startYear: 2017
 endDay: 1
 endMonth: 8
 endYear: 2017
-position: 'Full-Stack Developer'
+position: 'Full-Stack Developer Intern'
 ---
 
 ## Notable Contributions

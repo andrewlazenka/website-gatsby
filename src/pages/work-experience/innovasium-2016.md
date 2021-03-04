@@ -1,5 +1,4 @@
 ---
-title: 'Innovasium Digital 2016'
 company: 'Innovasium Digital'
 startDay: 2
 startMonth: 4
@@ -7,7 +6,7 @@ startYear: 2016
 endDay: 26
 endMonth: 7
 endYear: 2016
-position: 'Backend Developer'
+position: 'Backend Developer Intern'
 ---
 
 ## Notable Contributions

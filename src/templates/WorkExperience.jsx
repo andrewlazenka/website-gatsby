@@ -18,15 +18,14 @@ export default function SnippetTemplate({ data }) {
     endMonth,
     endYear,
     startMonth,
-    startYear,
-    title,
+    startYear
   } = frontmatter
 
   const startDate = format(new Date(startYear, startMonth), 'MMMM YYYY')
   const endDate = format(new Date(endYear, endMonth), 'MMMM YYYY')
   return (
     <Theme>
-      <Helmet title={`${title} | Work Experience - Andrew Lazenka`} />
+      <Helmet title={`${position} at ${company} in ${startYear}`} />
       <Header />
       <Layout>
         <PageHeader>

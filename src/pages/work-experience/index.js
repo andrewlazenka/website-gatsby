@@ -21,7 +21,7 @@ export default function Home({ data }) {
 
   return (
     <Theme>
-      <Helmet title="Andrew Lazenka" />
+      <Helmet title="Work Experience" />
       <Header />
       <Layout>
         <PageHeader>
