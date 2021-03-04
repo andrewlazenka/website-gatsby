@@ -4,7 +4,8 @@ module.exports = {
   theme: {
     extend: {
       animation: {
-        wave: 'wave 0.5s infinite'
+        wave: 'wave 0.5s infinite',
+        funBounce: 'funBounce 1s'
       },
       keyframes: {
         wave: {
@@ -13,17 +14,39 @@ module.exports = {
           '50%': { transform: 'rotate(20deg)' },
           '75%': { transform: 'rotate(-5deg)' },
           '100%': { transform: 'rotate(0deg)' },
-        }
-      }
+        },
+        funBounce: {
+          '0%': {
+            transform: 'translateY(0%)',
+            animationTimingFunction: 'cubic-bezier(0, 0, 0.2, 1)',
+          },
+          '25%': {
+            transform: 'translateY(-25%)',
+            animationTimingFunction: 'cubic-bezier(0.8, 0, 1, 1)',
+          },
+          '50%': {
+            transform: 'translateY(0%)',
+            animationTimingFunction: 'cubic-bezier(0, 0, 0.2, 1)',
+          },
+          '75%': {
+            transform: 'translateY(-15%)',
+            animationTimingFunction: 'cubic-bezier(0.8, 0, 1, 1)',
+          },
+          '100%': {
+            transform: 'translateY(0%)',
+            animationTimingFunction: 'cubic-bezier(0, 0, 0.2, 1)',
+          },
+        },
+      },
     },
   },
   variants: {
     extend: {
-      animation: ['hover']
+      animation: ['hover'],
     },
   },
   plugins: [],
   corePlugins: {
-    preflight: false
-  }
+    preflight: false,
+  },
 }

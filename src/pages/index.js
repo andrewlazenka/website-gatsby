@@ -36,13 +36,13 @@ export default function Home({ data }) {
           <div className="flex flex-col text-xl justify-center py-8 lg:py-0 lg:max-w-md max-w-lg text-center">
             <h1 className="z-0 font-normal">
               Hi, I'm Andrew{' '}
-              <p
+              <span
                 className="hover:animate-wave inline-block m-0"
                 role="img"
                 aria-label="Wave emoji with animation"
               >
                 👋🏻
-              </p>
+              </span>
             </h1>
             <span className="z-0">
               I love full-stack development, architecting robust devops

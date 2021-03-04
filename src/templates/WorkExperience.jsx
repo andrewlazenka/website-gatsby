@@ -3,12 +3,13 @@ import { graphql } from 'gatsby'
 import Helmet from 'react-helmet'
 import { format } from 'date-fns'
 
-import Header from '../components/Header'
-import Footer from '../components/Footer'
-import Layout from '../components/Layout'
-import PageHeader from '../components/PageHeader'
-import Theme from '../components/Theme'
-import { InternalLink } from '../components/Links'
+import Header from 'src/components/Header'
+import Footer from 'src/components/Footer'
+import Layout from 'src/components/Layout'
+import PageHeader from 'src/components/PageHeader'
+import Badge from 'src/components/Badge'
+import Theme from 'src/components/Theme'
+import { InternalLink } from 'src/components/Links'
 
 export default function SnippetTemplate({ data }) {
   const { frontmatter, html: __html } = data.markdownRemark
@@ -18,7 +19,9 @@ export default function SnippetTemplate({ data }) {
     endMonth,
     endYear,
     startMonth,
-    startYear
+    startYear,
+    technologies,
+    languages,
   } = frontmatter
 
   const startDate = format(new Date(startYear, startMonth), 'MMMM YYYY')
@@ -36,6 +39,30 @@ export default function SnippetTemplate({ data }) {
         <h1>{position}</h1>
         <h3 className="font-medium">{company}</h3>
         <h4 className="font-normal">{`${startDate} - ${endDate}`}</h4>
+        <div className="flex">
+          {technologies.map(t => (
+            <Badge
+              style={{
+                background:
+                  'conic-gradient(from -90deg at 50% -25%, blue, blueviolet)',
+              }}
+            >
+              {t}
+            </Badge>
+          ))}
+        </div>
+        <div className="flex">
+          {languages.map(l => (
+            <Badge
+              style={{
+                background:
+                  'conic-gradient(from -90deg at 25% 115%, #ff0000, #ff0066, #ff00cc, #cc00ff, #6600ff, #0000ff, #0000ff, #0000ff, #0000ff)',
+              }}
+            >
+              {l}
+            </Badge>
+          ))}
+        </div>
         <div dangerouslySetInnerHTML={{ __html }} />
       </Layout>
       <Footer />
@@ -57,6 +84,8 @@ export const pageQuery = graphql`
         startMonth
         startYear
         position
+        technologies
+        languages
       }
     }
     file(absolutePath: { eq: $fileAbsolutePath }) {
