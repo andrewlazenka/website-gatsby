@@ -1,45 +1,15 @@
 ---
 company: 'Innovasium Digital'
 startDay: 23
-startMonth: 3
+startMonth: 5
 startYear: 2018
 endDay: 31
-endMonth: 7
-endYear: 2019
+endMonth: 8
+endYear: 2020
 position: 'Full-Stack Developer Intern'
+languages: ['JavaScript', 'HTML', 'CSS', 'Ruby', 'PHP', 'Python', 'SQL', 'NoSQL']
+technologies: ['React', 'Redux', 'GraphQL', 'Gatsby', 'NodeJS', 'Rails', 'Docker', 'MongoDB', 'Postgres', 'AWS', 'Git']
 ---
-
-## Notable Contributions
-
-- Leveraged AWS ECS, ECR, and CircleCI to create an automatic deployment
-  pipeline for web applications, increasing service uptime to 99.8%.
-- Created AWS Lambda functions to automate removal of old instance snapshots,
-  logs, and start/stop of servers for use during business hours.
-- Built and deployed five client applications into production that use React &
-  Redux, GraphQL, NodeJS, MongoDB & PostgreSQL.
-- Used Docker to build and host portable applications to be run in development
-  and deployed to production.
-
-## Technologies
-
-- React
-- Redux
-- GraphQL
-- Gatsby
-- NodeJS
-- PHP
-- Ruby on Rails
-- Docker
-- Python
-- MongoDB
-- Postgres
-- AWS Lambda
-- AWS ECS & ECR
-- AWS CLI
-- CircleCI
-- Git
-
-## Position in Review
 
 Upon completing my third year at Queen's University, I leveraged a valuable
 opportunity through the school to go on a 12 month internship. Innovasium was kind
@@ -102,3 +72,13 @@ managing this group of hungry, young, smart, empathetic developers taught me a l
 Have faith in your team, manage expectations, dissolve large features into
 bite-sized pieces, reprioritize and be agile, don't be afraid to ask for help,
 provide guidance, be empathetic, just to name a few.
+
+## Notable Contributions
+
+- Championed architecture, development and deployment of multiple web applications
+  using React & Redux, GraphQL, and NodeJS on top of AWS serverless technologies
+- Migrated a legacy CMS onto AWS (ECS, S3, and RDS) increasing service uptime to
+  99.8%
+- Engineered the company's first fully automatic CI/CD pipelines, reducing
+  developer overhead by 10%
+- Developed an efficient and effective onboarding process for development interns

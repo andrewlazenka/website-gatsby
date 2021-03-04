@@ -56,7 +56,7 @@ export default function Home({ data }) {
           />
         </div>
       </div>
-      <main className="mx-auto my-0 py-12 px-6 max-w-3xl w-3/4">
+      <main className="mx-auto my-0 py-12 px-6 max-w-5xl w-3/4">
         <section>
           <h2 id="about">About</h2>
           Since 2018 I've been working at{' '}
@@ -89,9 +89,9 @@ export default function Home({ data }) {
           <br />
           <br />
           In my spare time, I enjoy writing and contributing open source
-          software which you can find{' '}
+          software which you can find on my{' '}
           <ExternalLink to="https://github.com/ALazenka">
-            on my GitHub
+            GitHub
           </ExternalLink>
           . Writing, producing and performing music is also a big passion of
           mine. My band{' '}
