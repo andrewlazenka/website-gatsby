@@ -8,7 +8,7 @@ import Email from '../assets/svg/email.inline.svg'
 import Resume from '../assets/svg/resume.inline.svg'
 import { ExternalLink } from '../components/Links'
 
-const iconStyle = "text-gray-900 hover:text-gray-600 transition-colors duration-300 ease-in-out h-6 w-6"
+const iconStyle = "text-indigo-900 hover:text-indigo-700 transition-colors duration-300 ease-in-out h-6 w-6"
 
 const Footer = () => (
   <>

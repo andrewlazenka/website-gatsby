@@ -39,7 +39,7 @@ export default function SnippetTemplate({ data }) {
         <h1>{position}</h1>
         <h3 className="font-medium">{company}</h3>
         <h4 className="font-normal">{`${startDate} - ${endDate}`}</h4>
-        <div className="flex">
+        <div className="flex flex-wrap">
           {technologies.map(t => (
             <Badge
               style={{
@@ -51,7 +51,7 @@ export default function SnippetTemplate({ data }) {
             </Badge>
           ))}
         </div>
-        <div className="flex">
+        <div className="flex flex-wrap">
           {languages.map(l => (
             <Badge
               style={{
