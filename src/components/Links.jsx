@@ -5,7 +5,7 @@ import clsx from 'classnames'
 
 export const InternalLink = props => (
   <Link
-    className=" text-base cursor-pointer text-indigo-500 transition-colors duration-300 ease-in-out hover:text-indigo-300"
+    className="text-base cursor-pointer text-indigo-500 transition-colors duration-300 ease-in-out hover:text-indigo-300"
     {...props}
   />
 )
