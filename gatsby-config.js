@@ -75,6 +75,7 @@ module.exports = {
       },
     },
     `gatsby-plugin-sitemap`,
-    'gatsby-plugin-postcss'
+    'gatsby-plugin-postcss',
+    'gatsby-plugin-root-import'
   ],
 }

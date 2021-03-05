@@ -1,14 +1,21 @@
 ---
-title: 'Innovasium Digital 2016'
 company: 'Innovasium Digital'
 startDay: 2
-startMonth: 4
+startMonth: 5
 startYear: 2016
 endDay: 26
-endMonth: 7
+endMonth: 8
 endYear: 2016
-position: 'Backend Developer'
+position: 'Backend Developer Intern'
+languages: ['JavaScript', 'HTML', 'CSS', 'Ruby', 'SQL']
+technologies: ['React', 'Redux', 'Rails', 'Postgres', 'Git']
 ---
+
+Throughout the summer of 2016, I had the opportunity to work for the team at
+Innovasium Digital. I was responsible for designing and implementing the initial
+RESTful API architecture for a large client web application using Ruby on Rails.
+The work culture along with having a small team size allowed for rapid prototyping
+and client feedback for iterating on features for the product.
 
 ## Notable Contributions
 
@@ -22,19 +29,3 @@ position: 'Backend Developer'
   version control is managed through Github
 - Wrote clear and concise documentation of all features implemented to provide
   clarity for my code when onboarding new developers
-
-## Technologies
-
-- Ruby on Rails
-- RSpec
-- AWS
-- Postgres
-- Git
-
-## Position in Review
-
-Throughout the summer of 2016, I had the opportunity to work for the team at
-Innovasium Digital. I was responsible for designing and implementing the initial
-RESTful API architecture for a large client web application using Ruby on Rails.
-The work culture along with having a small team size allowed for rapid prototyping
-and client feedback for reiterating over our product.

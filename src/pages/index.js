@@ -34,10 +34,19 @@ export default function Home({ data }) {
         <Header />
         <div className="flex justify-between w-3/4 max-w-screen-md mx-auto my-0 flex-col lg:flex-row items-center">
           <div className="flex flex-col text-xl justify-center py-8 lg:py-0 lg:max-w-md max-w-lg text-center">
+            <h1 className="z-0 font-normal">
+              Hi, I'm Andrew{' '}
+              <span
+                className="hover:animate-wave inline-block m-0"
+                role="img"
+                aria-label="Wave emoji with animation"
+              >
+                👋🏻
+              </span>
+            </h1>
             <span className="z-0">
-              Hi, I'm <b>Andrew</b>! I love full-stack development, architecting
-              robust devops solutions, collaborating, problem solving, and most
-              of all ☕️
+              I love full-stack development, architecting robust devops
+              solutions, collaborating, problem solving, and most of all ☕️
             </span>
           </div>
           <Img
@@ -47,9 +56,9 @@ export default function Home({ data }) {
           />
         </div>
       </div>
-      <main className="mx-auto my-0 py-12 px-6 max-w-3xl w-3/4">
+      <main className="mx-auto my-0 py-12 px-6 max-w-5xl w-3/4">
         <section>
-          <h3 id="about">About</h3>
+          <h2 id="about">About</h2>
           Since 2018 I've been working at{' '}
           <ExternalLink to="https://www.innovasium.com">
             Innovasium Digital
@@ -67,16 +76,12 @@ export default function Home({ data }) {
           Software Design.
           <br />
           <br />I have a passion for learning new technologies and incorporating
-          them into my work. Right now I am exploring highly performant,
-          resilient and scalable backend solutions using{' '}
-          <ExternalLink to="https://elixir-lang.org/">
-            Elixir
-          </ExternalLink>,{' '}
-          <ExternalLink to="https://golang.org/">Go</ExternalLink>, and{' '}
-          <ExternalLink to="https://rubyonrails.org/">
-            Ruby on Rails
-          </ExternalLink>
-          . For frontend development projects I've been exploring{' '}
+          them into my work. Right now I'm hacking with memory efficient,
+          portable languages such as{' '}
+          <ExternalLink to="https://www.rust-lang.org">Rust</ExternalLink>,{' '}
+          <ExternalLink to="https://golang.org">Go</ExternalLink>, and{' '}
+          <ExternalLink to="https://flutter.dev">Flutter</ExternalLink>. For
+          frontend development projects I've been exploring{' '}
           <ExternalLink to="https://www.tailwindcss.com">
             TailwindCSS
           </ExternalLink>{' '}
@@ -84,9 +89,9 @@ export default function Home({ data }) {
           <br />
           <br />
           In my spare time, I enjoy writing and contributing open source
-          software which you can find{' '}
+          software which you can find on my{' '}
           <ExternalLink to="https://github.com/ALazenka">
-            on my GitHub
+            GitHub
           </ExternalLink>
           . Writing, producing and performing music is also a big passion of
           mine. My band{' '}
@@ -96,7 +101,7 @@ export default function Home({ data }) {
           has been releasing new music on a regular basis, check us out!
         </section>
         <section className="mt-8">
-          <h3 id="work-and-experience">Work & Experience</h3>
+          <h2 id="work-and-experience">Work & Experience</h2>
           {Array.from(data.workExperiences.nodes)
             .sort(sortFilterWork)
             .splice(0, MAX_WORK_EXP)

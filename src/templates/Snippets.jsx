@@ -9,13 +9,12 @@ import Layout from '../components/Layout'
 import { InternalLink } from '../components/Links'
 import PageHeader from '../components/PageHeader'
 import Theme from '../components/Theme'
-import { snippetDateString } from '../util'
 
 const getSnippetCode = baseCodeElement =>
   baseCodeElement.children[0].children[0].value
 
 function SnippetTemplate({ data }) {
-  const { markdownRemark: post, file } = data
+  const { markdownRemark: post } = data
   const { frontmatter, htmlAst } = post
   const { language } = frontmatter
   const baseCodeElement = htmlAst.children.find(
@@ -24,7 +23,7 @@ function SnippetTemplate({ data }) {
   const codeSnippet = getSnippetCode(baseCodeElement)
   return (
     <Theme>
-      <Helmet title={`${post.frontmatter.title} Snippet - Andrew Lazenka`} />
+      <Helmet title={`${post.frontmatter.title}`} />
       <Header />
       <Layout>
         <PageHeader>
@@ -37,11 +36,11 @@ function SnippetTemplate({ data }) {
             <header>
               <h1 className="mb-0 py-2">{post.frontmatter.title}</h1>
             </header>
-            <section className="py-2 font-light">{`Added ${snippetDateString(
+            {/* <section className="py-2 font-light">{`Added ${snippetDateString(
               file.birthTime
-            )}`}</section>
+            )}`}</section> */}
             <section
-              className="rounded-md bg-indigo-300 border-solid border-indigo-400 px-3"
+              className="rounded-l-sm border-t-0 border-r-0 border-b-0 border-l-3 border-solid border-indigo-400 px-3"
               dangerouslySetInnerHTML={{ __html: post.excerpt }}
             />
             <section dangerouslySetInnerHTML={{ __html: post.html }} />

@@ -1,7 +1,7 @@
 import React from 'react'
 import { format } from 'date-fns'
 
-import { generateSnippetPageSlug } from '../util'
+import { generateSnippetPageSlug, adjustMonth } from '../util'
 import { InternalLink } from '../components/Links'
 
 function WorkExperience({ frontmatter, fileAbsolutePath }) {
@@ -13,16 +13,17 @@ function WorkExperience({ frontmatter, fileAbsolutePath }) {
     startMonth,
     startYear,
   } = frontmatter
-  const startDate = format(new Date(startYear, startMonth), 'MMMM YYYY')
-  const endDate = format(new Date(endYear, endMonth), 'MMMM YYYY')
+
+  const startDate = format(new Date(startYear, adjustMonth(startMonth)), 'MMMM YYYY')
+  const endDate = format(new Date(endYear, adjustMonth(endMonth)), 'MMMM YYYY')
   return (
-    <div className="py-3 px-4 pl-0">
+    <article className="py-3 px-4 pl-0">
       <InternalLink to={generateSnippetPageSlug({ fileAbsolutePath })}>
         <h3>{position}</h3>
       </InternalLink>
       <h4>{company}</h4>
       <p className="m-0">{`${startDate} - ${endDate}`}</p>
-    </div>
+    </article>
   )
 }
 

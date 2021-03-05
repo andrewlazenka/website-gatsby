@@ -1,9 +1,11 @@
 import React from 'react'
 
-export default props => (
+const Layout = props => (
   <main
     style={{ minHeight: 'calc(100vh - 292px)' }}
-    className="mx-auto py-24 px-6 max-w-3xl w-3/4"
+    className="mx-auto pt-28 pb-16 px-6 max-w-3xl w-3/4"
     {...props}
   />
 )
+
+export default Layout

@@ -44,7 +44,7 @@ export default props => (
       />
       {props.preBodyComponents}
       <div
-        key={`body`}
+        key="body"
         id="___gatsby"
         dangerouslySetInnerHTML={{ __html: props.body }}
       />

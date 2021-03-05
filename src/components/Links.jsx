@@ -5,21 +5,22 @@ import clsx from 'classnames'
 
 export const InternalLink = props => (
   <Link
-    className=" text-base cursor-pointer text-indigo-500 transition-colors duration-300 ease-in-out hover:text-indigo-300"
+    className="text-base cursor-pointer text-indigo-500 transition-colors duration-300 ease-in-out hover:text-indigo-300"
     {...props}
   />
 )
 
-export const ExternalLink = ({ to, children, ...props }) => (
+export const ExternalLink = ({ to, className, ...props }) => (
   <a
-    className="cursor-pointer text-indigo-500 transition-colors duration-300 ease-in-out hover:text-indigo-300"
+    className={clsx(
+      'cursor-pointer text-indigo-500 dark:hover:text-indigo-300 transition-colors duration-300 ease-in-out',
+      className
+    )}
     href={to}
     target="_blank"
     rel="noopener noreferrer"
     {...props}
-  >
-    {children}
-  </a>
+  />
 )
 
 export const LocationAwareLink = props => {

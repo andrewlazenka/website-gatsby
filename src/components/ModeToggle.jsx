@@ -1,5 +1,4 @@
 import React from 'react'
-import Tooltip from '@reach/tooltip'
 import clsx from 'classnames'
 
 import SunIcon from '../assets/svg/sun.inline.svg'
@@ -38,26 +37,24 @@ function ModeToggle() {
   }
 
   return (
-    <Tooltip label={`${isDarkTheme ? 'Dark' : 'Light'} Theme`}>
-      <span className="relative w-6 h-6" style={{ lineHeight: 0 }}>
-        <SunIcon
-          className={clsx(
-            baseIconStyle,
-            { [shownStyle]: !isDarkTheme },
-            { [hiddenStyle]: isDarkTheme }
-          )}
-          onClick={() => changeTheme('dark')}
-        />
-        <MoonIcon
-          className={clsx(
-            baseIconStyle,
-            { [hiddenStyle]: !isDarkTheme },
-            { [shownStyle]: isDarkTheme }
-          )}
-          onClick={() => changeTheme('light')}
-        />
-      </span>
-    </Tooltip>
+    <span className="relative w-6 h-6" style={{ lineHeight: 0 }}>
+      <SunIcon
+        className={clsx(
+          baseIconStyle,
+          { [shownStyle]: !isDarkTheme },
+          { [hiddenStyle]: isDarkTheme }
+        )}
+        onClick={() => changeTheme('dark')}
+      />
+      <MoonIcon
+        className={clsx(
+          baseIconStyle,
+          { [hiddenStyle]: !isDarkTheme },
+          { [shownStyle]: isDarkTheme }
+        )}
+        onClick={() => changeTheme('light')}
+      />
+    </span>
   )
 }
 

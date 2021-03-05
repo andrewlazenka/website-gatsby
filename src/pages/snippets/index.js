@@ -224,7 +224,7 @@ export default function SnippetSearch({ data }) {
 
   return (
     <Theme>
-      <Helmet title="Snippets - Andrew Lazenka" />
+      <Helmet title="Snippets" />
       <Header />
       <Layout>
         <div className="flex justify-between flex-col md:flex-row">
