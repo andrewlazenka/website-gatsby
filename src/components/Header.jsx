@@ -1,11 +1,11 @@
 import React from 'react'
 
-import HamburgerMenu from './HamburgerMenu'
-import ModalMenu from './ModalMenu'
-import ModeToggle from './ModeToggle'
-import AndrewLogo from '../assets/png/AndrewLogo.png'
-import { LocationAwareLink } from '../components/Links'
-import SocialLinks from '../components/SocialLinks'
+import HamburgerMenu from 'src/components/HamburgerMenu'
+import ModalMenu from 'src/components/ModalMenu'
+import ModeToggle from 'src/components/ModeToggle'
+import AndrewLogo from 'src/assets/png/AndrewLogo.png'
+import { LocationAwareLink } from 'src/components/Links'
+import SocialLinks from 'src/components/SocialLinks'
 
 const menuItems = [
   {
@@ -36,37 +36,39 @@ const MobileMenu = ({ onClose }) => (
 export default () => {
   const [menuModalOpen, setMenuModalOpen] = React.useState(false)
   return (
-    <div className="absolute z-10 top-0 left-0 flex flex-row-reverse sm:flex-row justify-between w-full">
-      <div className="hidden sm:flex items-center p-5 xs:p-7">
-        <LocationAwareLink to="/">
-          <img
-            src={AndrewLogo}
-            alt="Site Logo - Andrew Lazenka"
-            className="h-6 xs:h-8"
-          />
-        </LocationAwareLink>
-      </div>
-      <div className="flex">
-        {menuItems.map(({ name, to }, index) => (
-          <div key={name} className="hidden md:flex items-center p-7">
-            <LocationAwareLink key={`${name}-${index}`} to={to}>
-              {name}
-            </LocationAwareLink>
+    <div className="absolute z-10 top-0 left-0 w-full">
+      <nav className="flex flex-row-reverse sm:flex-row justify-between mx-auto max-w-5xl w-3/4">
+        <div className="hidden sm:flex items-center p-5 xs:p-7">
+          <LocationAwareLink to="/">
+            <img
+              src={AndrewLogo}
+              alt="Site Logo - Andrew Lazenka"
+              className="h-6 xs:h-8"
+            />
+          </LocationAwareLink>
+        </div>
+        <div className="flex">
+          {menuItems.map(({ name, to }, index) => (
+            <div key={name} className="hidden md:flex items-center p-7">
+              <LocationAwareLink key={`${name}-${index}`} to={to}>
+                {name}
+              </LocationAwareLink>
+            </div>
+          ))}
+          <div className="flex items-center p-7">
+            <ModeToggle />
           </div>
-        ))}
-        <div className="flex items-center p-7">
-          <ModeToggle />
+          <div className="flex items-center p-7 cursor-default md:hidden">
+            <HamburgerMenu
+              active={menuModalOpen}
+              onClick={() => setMenuModalOpen(!menuModalOpen)}
+            />
+          </div>
         </div>
-        <div className="flex items-center p-7 cursor-default md:hidden">
-          <HamburgerMenu
-            active={menuModalOpen}
-            onClick={() => setMenuModalOpen(!menuModalOpen)}
-          />
-        </div>
-      </div>
-      <ModalMenu open={menuModalOpen}>
-        <MobileMenu onClose={() => setMenuModalOpen(false)} />
-      </ModalMenu>
+        <ModalMenu open={menuModalOpen}>
+          <MobileMenu onClose={() => setMenuModalOpen(false)} />
+        </ModalMenu>
+        </nav>
     </div>
   )
 }
