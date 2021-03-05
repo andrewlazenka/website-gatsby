@@ -2,11 +2,16 @@ module.exports = {
   purge: ['./src/**/*.{js,jsx,ts,tsx}'],
   darkMode: 'class',
   theme: {
+    fill: theme => ({
+      grayLight: theme('colors.gray.50'),
+      grayDark: theme('colors.gray.900'),
+    }),
     extend: {
       animation: {
         wave: 'wave 0.5s infinite',
-        funBounce: 'funBounce 1s'
+        funBounce: 'funBounce 1s',
       },
+      fill: ['hover'],
       keyframes: {
         wave: {
           '0%': { transform: 'rotate(0deg)' },
@@ -43,6 +48,7 @@ module.exports = {
   variants: {
     extend: {
       animation: ['hover'],
+      fill: ['dark']
     },
   },
   plugins: [],
