@@ -25,9 +25,7 @@ function sortFilterWork(ex1, ex2) {
   return 0
 }
 
-const Emoji = props => (
-  <span className="hover:animate-wave inline-block m-0" role="img" {...props} />
-)
+const emojiStyle = 'hover:animate-wave inline-block m-0'
 
 export default function Home({ data }) {
   return (
@@ -38,26 +36,50 @@ export default function Home({ data }) {
         <Header />
         <div className="flex justify-between w-3/4 max-w-screen-md mx-auto my-0 flex-col lg:flex-row items-center">
           <div className="flex flex-col text-xl py-8 lg:py-0 lg:max-w-md max-w-lg">
-            <h1 className="z-0 font-normal text-center">Hi, I'm Andrew!</h1>
+            <h1 className="z-0 font-normal text-center text-5xl">Hi, I'm Andrew!</h1>
             <div className="z-0 flex flex-col">
-              <span className="flex-grow px-8">
-                <Emoji aria-label="Art emoji">🎨</Emoji> Full-Stack Developer
+              <span className="w-3/4 m-auto">
+                <span className={emojiStyle} role="img" aria-label="Art emoji">
+                  🎨
+                </span>{' '}
+                Full-Stack Developer
               </span>
-              <span className="flex-grow px-8">
-                <Emoji aria-label="Cloud emoji">☁️</Emoji> DevOps Architect
+              <span className="w-3/4 m-auto">
+                <span
+                  className={emojiStyle}
+                  role="img"
+                  aria-label="Cloud emoji"
+                >
+                  ☁️
+                </span>{' '}
+                DevOps Architect
               </span>
-              <span className="flex-grow px-8">
-                <Emoji aria-label="Guitar emoji">🎸</Emoji> Avid Musician
+              <span className="w-3/4 m-auto">
+                <span
+                  className={emojiStyle}
+                  role="img"
+                  aria-label="Guitar emoji"
+                >
+                  🎸
+                </span>{' '}
+                Avid Musician
               </span>
-              <span className="flex-grow px-8">
-                <Emoji aria-label="Coffee emoji">☕️</Emoji> Coffee Enthusiast
+              <span className="w-3/4 m-auto">
+                <span
+                  className={emojiStyle}
+                  role="img"
+                  aria-label="Coffee emoji"
+                >
+                  ☕️
+                </span>{' '}
+                Coffee Enthusiast
               </span>
             </div>
           </div>
           <Img
             style={{ height: 400, width: 275 }}
             fluid={data.andrewHeadshot.childImageSharp.fluid}
-            alt="Andrew Headshot"
+            alt="Professional headshot of Andrew"
           />
         </div>
         <div className="overflow-hidden block absolute inset-x-0 bottom-0 w-full h-16 z-10">

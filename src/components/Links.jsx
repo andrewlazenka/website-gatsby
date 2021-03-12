@@ -20,7 +20,9 @@ export const ExternalLink = ({ to, className, ...props }) => (
     target="_blank"
     rel="noopener noreferrer"
     {...props}
-  />
+  >
+    {props.children}
+  </a>
 )
 
 export const LocationAwareLink = props => {
