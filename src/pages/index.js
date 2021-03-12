@@ -25,6 +25,10 @@ function sortFilterWork(ex1, ex2) {
   return 0
 }
 
+const Emoji = props => (
+  <span className="hover:animate-wave inline-block m-0" role="img" {...props} />
+)
+
 export default function Home({ data }) {
   return (
     <Theme>
@@ -33,21 +37,22 @@ export default function Home({ data }) {
         <HeroBanner />
         <Header />
         <div className="flex justify-between w-3/4 max-w-screen-md mx-auto my-0 flex-col lg:flex-row items-center">
-          <div className="flex flex-col text-xl justify-center py-8 lg:py-0 lg:max-w-md max-w-lg text-center">
-            <h1 className="z-0 font-normal">
-              Hi, I'm Andrew{' '}
-              <span
-                className="hover:animate-wave inline-block m-0"
-                role="img"
-                aria-label="Wave emoji with animation"
-              >
-                👋🏻
+          <div className="flex flex-col text-xl py-8 lg:py-0 lg:max-w-md max-w-lg">
+            <h1 className="z-0 font-normal text-center">Hi, I'm Andrew!</h1>
+            <div className="z-0 flex flex-col">
+              <span className="flex-grow px-8">
+                <Emoji aria-label="Art emoji">🎨</Emoji> Full-Stack Developer
               </span>
-            </h1>
-            <span className="z-0">
-              I love full-stack development, architecting robust devops
-              solutions, collaborating, problem solving, and most of all ☕️
-            </span>
+              <span className="flex-grow px-8">
+                <Emoji aria-label="Cloud emoji">☁️</Emoji> DevOps Architect
+              </span>
+              <span className="flex-grow px-8">
+                <Emoji aria-label="Guitar emoji">🎸</Emoji> Avid Musician
+              </span>
+              <span className="flex-grow px-8">
+                <Emoji aria-label="Coffee emoji">☕️</Emoji> Coffee Enthusiast
+              </span>
+            </div>
           </div>
           <Img
             style={{ height: 400, width: 275 }}
@@ -61,7 +66,7 @@ export default function Home({ data }) {
             width="1440"
             height="74"
             viewBox="0 0 1440 74"
-            className="transition-colors duration-500 ease-in-out absolute right-0 fill-grayLight dark:fill-grayDark"
+            className="transition-colors duration-300 ease-in-out absolute right-0 fill-grayLight dark:fill-grayDark"
             style={{
               left: '-3px',
               right: '-3px',

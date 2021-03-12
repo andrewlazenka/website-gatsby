@@ -9,7 +9,7 @@ const copyright = `© ${year} Andrew Lazenka. All Rights Reserved.`
 
 const Footer = () => (
   <footer
-    className="flex items-center w-full bg-gradient-to-b from-gray-50 via-grey-300 to-indigo-500 dark:from-gray-900 dark:to-gray-600 transition-all duration-500 ease-in-out"
+    className="flex items-center w-full bg-gradient-to-b from-gray-50 via-grey-300 to-indigo-500 dark:from-gray-900 dark:to-gray-600 transition-all duration-300 ease-in-out"
     style={{ minHeight: 300 }}
   >
     <div className="flex justify-between flex-col md:flex-row px-5 w-3/4 max-w-5xl mx-auto">

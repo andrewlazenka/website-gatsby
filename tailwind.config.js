@@ -9,7 +9,7 @@ module.exports = {
     extend: {
       animation: {
         wave: 'wave 0.5s infinite',
-        funBounce: 'funBounce 1s',
+        funBounce: 'funBounce 750ms',
       },
       fill: ['hover'],
       keyframes: {
