@@ -37,7 +37,7 @@ function ModeToggle() {
   }
 
   return (
-    <span className="relative w-6 h-6" style={{ lineHeight: 0 }}>
+    <span className="relative w-6 h-6 leading-[0px]">
       <SunIcon
         className={clsx(
           baseIconStyle,

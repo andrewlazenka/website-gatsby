@@ -32,10 +32,10 @@ function Code({ codeString, language, metastring }) {
       theme={theme}
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
-        <div className="text-xl rounded-lg" style={{ overflow: 'auto' }}>
+        <div className="text-xl rounded-lg overflow-auto">
           <pre
-            className={clsx('p-2 rounded-lg', className)}
-            style={{ ...style, overflow: 'auto' }}
+            className={clsx('p-2 rounded-lg overflow-auto', className)}
+            style={style}
           >
             {tokens.map((line, i) => (
               <div
@@ -47,8 +47,7 @@ function Code({ codeString, language, metastring }) {
                 })}
               >
                 <span
-                  className="inline-block w-8 opacity-30"
-                  style={{ userSelect: 'none' }}
+                  className="inline-block w-8 opacity-30 select-none"
                 >
                   {i + 1}
                 </span>

@@ -25,7 +25,7 @@ export default function Home({ data }) {
       <Header />
       <Layout>
         <PageHeader>
-          <h1 style={{ marginBottom: 0 }}>Work Experience</h1>
+          <h1 className="mb-0">Work Experience</h1>
         </PageHeader>
         <main className="py-4">
             {data.workExperiences.nodes.map(workExperience => {

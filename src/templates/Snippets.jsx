@@ -41,7 +41,7 @@ function SnippetTemplate({ data }) {
             )}`}</section> */}
             <aside className="relative rounded-md border-t-0 border-r-0 border-b-0 border-l-3 border-solid border-indigo-400 bg-blue-100 px-8 py-4 my-4">
               <div className="dark:text-gray-900" dangerouslySetInnerHTML={{ __html: post.excerpt }} />
-              <div className="transition-colors duration-300 ease-in-out absolute top-0 left-0 p-2 text-indigo-400 bg-gray-50 dark:bg-gray-900 rounded-full" style={{ transform: 'translate(-50%, -50%)' }}>
+              <div className="transition-colors duration-300 ease-in-out absolute top-0 left-0 p-2 text-indigo-400 bg-gray-50 dark:bg-gray-900 rounded-full transform translate-x-[-50%] translate-y-[-50%]">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="32"

@@ -77,7 +77,7 @@ export default function Home({ data }) {
             </div>
           </div>
           <Img
-            style={{ height: 400, width: 275 }}
+            className="h-[400px] w-[275px]"
             fluid={data.andrewHeadshot.childImageSharp.fluid}
             alt="Professional headshot of Andrew"
           />
@@ -88,13 +88,7 @@ export default function Home({ data }) {
             width="1440"
             height="74"
             viewBox="0 0 1440 74"
-            className="transition-colors duration-300 ease-in-out absolute right-0 fill-grayLight dark:fill-grayDark"
-            style={{
-              left: '-3px',
-              right: '-3px',
-              minWidth: 600,
-              width: '106%',
-            }}
+            className="left-[-3px] right-[-3px] min-w-[600px] w-[106%] transition-colors duration-300 ease-in-out absolute right-0 fill-grayLight dark:fill-grayDark"
           >
             <path d="M456.464 0.0433865C277.158 -1.70575 0 50.0141 0 50.0141V74H1440V50.0141C1440 50.0141 1320.4 31.1925 1243.09 27.0276C1099.33 19.2816 1019.08 53.1981 875.138 50.0141C710.527 46.3727 621.108 1.64949 456.464 0.0433865Z"></path>
           </svg>

@@ -228,9 +228,9 @@ export default function SnippetSearch({ data }) {
       <Header />
       <Layout>
         <div className="flex justify-between flex-col md:flex-row">
-          <aside className="w-full md:w-1/4" style={{ minWidth: 175 }}>
+          <aside className="w-full md:w-1/4 min-w-[175px]">
             <PageHeader>
-              <h1 style={{ marginBottom: 0 }}>Snippets</h1>
+              <h1 className="mb-0">Snippets</h1>
             </PageHeader>
             <div className="flex justify-between items-center">
               <input
