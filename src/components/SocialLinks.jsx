@@ -22,7 +22,7 @@ const SocialLinks = () => (
     >
       <LinkedInLogo className={iconStyle} />
     </ExternalLink>
-    <ExternalLink className={linkStyle} to="https://www.instagram.com/alazenka">
+    <ExternalLink className={linkStyle} to="https://www.instagram.com/andrewlazenka">
       <InstaLogo className={iconStyle} />
     </ExternalLink>
     {/*
